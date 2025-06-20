@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://xxfttkx.github.io/TwinkleStarKnights_Battle_Simulator",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
