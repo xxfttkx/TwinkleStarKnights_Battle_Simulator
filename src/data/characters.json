@@ -1,0 +1,67 @@
+[
+    {
+        "id":3002,
+        "name": "招福の明星_ヴィーナス",
+        "role": "魔法",
+        "avatar": "https://twinklestarknights.wikiru.jp/attach2/696D67_EFBCBBE68B9BE7A68FE381AEE6988EE6989FEFBCBDE383B4E382A3E383BCE3838AE382B95F69636F6E2E706E67.png",
+        "atk": 3121,
+        "ex":30,
+        "ex_up": 60,
+        "type": "atk",
+        "ct": 20,
+        "faction": "人間",
+        "element": "雷"
+    },
+    {
+        "id":3003,
+        "name": "夏空の一番星_ヴィーナス",
+        "role": "魔法",
+        "avatar":"https://twinklestarknights.wikiru.jp/attach2/696D67_EFBCBBE5A48FE7A9BAE381AEE4B880E795AAE6989FEFBCBDE383B4E382A3E383BCE3838AE382B95F69636F6E2E706E67.png",
+        "atk": 2250,
+        "ex":30,
+        "ex_up": 39,
+        "type": "spd",
+        "ct": 13,
+        "faction": "人間",
+        "element": "水"
+    },
+    {
+        "id":91001,
+        "name": "霹靂の射手_梨緒",
+        "role": "打撃",
+        "avatar":"https://twinklestarknights.wikiru.jp/attach2/696D67_EFBCBBE99CB9E99D82E381AEE5B084E6898BEFBCBDE6A2A8E7B7925F69636F6E2E706E67.png",
+        "atk": 2173,
+        "ex":30,
+        "ex_up": 30,
+        "type": "spd",
+        "ct": 13,
+        "faction": "人間",
+        "element": "雷"
+    },
+    {
+        "id":58001,
+        "name": "舞うは九浄の桜花_ヘレナ",
+        "role": "斬撃",
+        "avatar":"https://twinklestarknights.wikiru.jp/attach2/696D67_EFBCBBE8889EE38186E381AFE4B99DE6B584E381AEE6A19CE88AB1EFBCBDE38398E383ACE3838A5F69636F6E2E706E67.png",
+        "atk": 2456,
+        "ex":30,
+        "ex_up": 69,
+        "type": "atk",
+        "ct": 18,
+        "faction": "人間",
+        "element": "闇"
+    },
+    {
+        "id":27001,
+        "name": "正義のハッカー_コハルコ",
+        "role": "打撃",
+        "avatar":"https://twinklestarknights.wikiru.jp/attach2/696D67_EFBCBBE6ADA3E7BEA9E381AEE3838FE38383E382ABE383BCEFBCBDE382B3E3838FE383ABE382B35F69636F6E2E706E67.png",
+        "atk": 1108,
+        "ex":25,
+        "ex_up": 70,
+        "type": "sup",
+        "ct": 17,
+        "faction": "人間",
+        "element": "光"
+    }
+]
