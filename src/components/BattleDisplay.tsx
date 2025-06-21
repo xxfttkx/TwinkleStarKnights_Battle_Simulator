@@ -60,8 +60,22 @@ export default function BattleDisplay({ battleSystem }: BattleDisplayProps) {
           />
         ))}
       </div>
-
-      {/* 第二行：队伍状态 + 日志区域 并排 */}
+      {/* 第二行：按钮区域 */}
+      <div className="my-4 flex justify-center gap-4">
+        <button
+          onClick={() => battleSystem.unison()}
+          className="px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600"
+        >
+          Unison
+        </button>
+        <button
+          onClick={() => battleSystem.charge()}
+          className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+        >
+          Charge
+        </button>
+      </div>
+      {/* 第三行：队伍状态 + 日志区域 并排 */}
       <div className="grid grid-cols-3 gap-4">
         {/* 队伍状态 */}
         <div className="col-span-1">

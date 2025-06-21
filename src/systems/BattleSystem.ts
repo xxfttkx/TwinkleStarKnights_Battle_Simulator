@@ -106,8 +106,15 @@ export class BattleSystem {
       'custom-event',
       `${this.team[this.canAction[0]].data.name} 发动了unison!`
     );
+    this.startNewTurn();
   }
 
+  charge(): void {
+    if (this.canAction.length !== 1) {
+      alert("can't charge now!");
+      return;
+    }
+  }
   // 增加队伍整体 EX 量
   addEx(amount: number): void {
     this.teamEx = Math.min(this.teamEx + amount, this.teamExMax);
@@ -179,7 +186,7 @@ export class BattleSystem {
         this.addEx(40 * this.afterAction.length);
         emitter.emit(
           'custom-event',
-          `$ユニゾンアタック(ex + ${40 * this.afterAction.length})`
+          `ユニゾンアタック(ex + ${40 * this.afterAction.length})`
         );
       }
       this.startNewTurn();
