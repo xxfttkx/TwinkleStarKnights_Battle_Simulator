@@ -51,7 +51,7 @@ export default function BattleDisplay({ battleSystem }: BattleDisplayProps) {
     <div className="mt-6 space-y-6">
       {/* 队伍成员 */}
       <h2 className="text-xl font-bold mb-4">队伍成员</h2>
-      <div className="grid grid-cols-5 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {battleSystem.team.map(character => (
           <CharacterCard
             key={character.data.id}
