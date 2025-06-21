@@ -71,6 +71,7 @@ export class BattleSystem {
     this.teamExMax = 400; // 最大 EX 量为 400
     for (const c of this.team) {
       this.addEx(c.getEx()); // 初始化时增加每个角色的 EX 量
+      emitter.emit('ex-up-changed', c.data.name); // 通知 EX_UP 变化
     }
     // perfect ロケットスタート
     for (const c of this.team) {
