@@ -123,7 +123,7 @@ export class CharacterBase {
     }
   }
 
-  ctUnison(num: number): void {
+  ctChange(num: number): void {
     this.ct = num;
   }
 

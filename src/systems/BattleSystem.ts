@@ -93,27 +93,69 @@ export class BattleSystem {
   }
 
   unison(): void {
+    if (this.startAction !== -1) {
+      alert('もう行動しているキャラがいます！');
+      return;
+    }
     let canUnison = this.canAction.length === 1;
     if (!canUnison) {
-      alert('当前无法发动合体技能！');
+      alert("can't unison now!");
+      return;
+    }
+    let currChar = this.team[this.canAction[0]];
+    if (currChar.isCharged) {
+      alert(`${currChar.data.name} is already charged, can't unison now!`);
       return;
     }
     let secondPos = 999;
     for (const c of this.team)
       if (c.ct != 0) secondPos = Math.min(secondPos, c.ct); // 找到第二个位置的最小 CT
-    this.team[this.canAction[0]].ctUnison(secondPos);
-    emitter.emit(
-      'custom-event',
-      `${this.team[this.canAction[0]].data.name} 发动了unison!`
-    );
+    currChar.ctChange(secondPos);
+    emitter.emit('custom-event', `${currChar.data.name} 发动了unison!`);
     this.startNewTurn();
   }
 
   charge(): void {
-    if (this.canAction.length !== 1) {
-      alert("can't charge now!");
+    if (this.startAction !== -1) {
+      alert('もう行動しているキャラがいます！');
       return;
     }
+    for (const index of this.canAction) {
+      let c = this.team[index];
+      if (c.isCharged) {
+        alert(`${c.data.name} is already charged!`);
+        return;
+      }
+    }
+    // todo: ただし、 蛍火 はATKタイプであるにもかかわらず例外的に8CTとなっている。
+    let typeToCT: Record<string, number> = {
+      spd: 12,
+      sup: 10,
+      atk: 9,
+      heal: 8,
+      def: 7,
+    };
+    let allCT = 0;
+    for (const index of this.canAction) {
+      let c = this.team[index];
+      if (typeToCT[c.data.type] === undefined) {
+        alert(`出bug啦`);
+        return;
+      }
+      allCT += typeToCT[c.data.type];
+    }
+    // ユニゾン参加者全員のチャージCTの平均値（小数点以下切り捨て）
+    let chargedCT = Math.floor(allCT / this.canAction.length);
+    for (const index of this.canAction) {
+      let c = this.team[index];
+      c.ctChange(chargedCT);
+      c.isCharged = true;
+    }
+    const names = this.canAction
+      .map(index => this.team[index].data.name)
+      .join(', ');
+    emitter.emit('custom-event', `${names} charged!`);
+    this.startNewTurn();
   }
   // 增加队伍整体 EX 量
   addEx(amount: number): void {
