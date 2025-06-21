@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { CharacterBase } from '../types/CharacterBase';
 import { BattleSystem } from '../systems/BattleSystem';
 import emitter from '../eventBus';
+import CharacterCard from './CharacterCard';
 
 interface BattleDisplayProps {
   battleSystem: BattleSystem;
@@ -47,87 +48,52 @@ export default function BattleDisplay({ battleSystem }: BattleDisplayProps) {
   };
 
   return (
-    <div className="mt-6 grid grid-cols-6 gap-4">
+    <div className="mt-6 space-y-6">
       {/* 队伍成员 */}
-      <div className="col-span-2">
-        <h2 className="text-xl font-bold mb-4">队伍成员</h2>
-        <div className="grid grid-cols-5 gap-4">
-          {battleSystem.team.map(character => (
-            <div
-              key={character.data.id}
-              className="border p-4 rounded-lg text-center"
-            >
-              <img
-                src={character.data.avatar}
-                alt={`${character.data.name} 的头像`}
-                className="w-16 h-16 mx-auto mb-2 rounded-full"
-              />
-              <div className="text-lg font-semibold">{character.data.name}</div>
-              <div className="text-sm text-gray-500">ct: {character.ct}</div>
-              <div className="text-sm text-gray-500">
-                ex: {character.data.ex}
-              </div>
-              <div className="text-sm text-gray-500">
-                ex_up: {character.getEx_up()}
-              </div>
-              <div className="text-sm text-gray-500">
-                ct_bonus: {character.getCTBonus().toFixed(2)}
-              </div>
-              {character.ct == 0 && (
-                <div className="mt-4 flex justify-center gap-2">
-                  <button
-                    className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                    onClick={() => useSkill(character, 'skill1')}
-                  >
-                    Ex1
-                  </button>
-                  <button
-                    className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
-                    onClick={() => useSkill(character, 'skill2')}
-                  >
-                    Ex2
-                  </button>
-                  <button
-                    className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
-                    onClick={() => useSkill(character, 'atk')}
-                  >
-                    atk
-                  </button>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+      <h2 className="text-xl font-bold mb-4">队伍成员</h2>
+      <div className="grid grid-cols-5 gap-4">
+        {battleSystem.team.map(character => (
+          <CharacterCard
+            key={character.data.id}
+            character={character}
+            useSkill={useSkill}
+          />
+        ))}
       </div>
 
-      {/* 队伍状态 */}
-      <div className="col-span-2">
-        <h2 className="text-xl font-bold mb-4">队伍状态</h2>
-        <div className="border p-4 rounded-lg mb-4">
-          <p className="text-lg">队伍整体 EX 量：</p>
-          <p className="text-2xl font-bold text-blue-600">{teamEx}</p>
+      {/* 第二行：队伍状态 + 日志区域 并排 */}
+      <div className="grid grid-cols-3 gap-4">
+        {/* 队伍状态 */}
+        <div className="col-span-1">
+          <h2 className="text-xl font-bold mb-4">队伍状态</h2>
+          <div className="border p-4 rounded-lg mb-4">
+            <p className="text-lg">队伍整体 EX 量：</p>
+            <p className="text-2xl font-bold text-blue-600">{teamEx}</p>
+          </div>
+          <label className="flex items-center mt-2 text-sm text-gray-600">
+            <input
+              type="checkbox"
+              className="mr-2"
+              checked={allowNegativeEx}
+              onChange={e => {
+                battleSystem.allowNegativeEx = e.target.checked;
+                setAllowNegativeEx(e.target.checked);
+              }}
+            />
+            允许 EX 为负数
+          </label>
         </div>
-        <label className="flex items-center mt-2 text-sm text-gray-600">
-          <input
-            type="checkbox"
-            className="mr-2"
-            checked={allowNegativeEx}
-            onChange={e => {
-              battleSystem.allowNegativeEx = e.target.checked;
-              setAllowNegativeEx(e.target.checked);
-            }}
-          />
-          允许 EX 为负数
-        </label>
-      </div>
-      {/* 日志显示区域 */}
-      <div className="border p-4 rounded-lg h-64 overflow-y-auto bg-gray-50">
-        <h3 className="text-lg font-bold mb-2">日志输出</h3>
-        <ul className="text-sm list-disc pl-5 space-y-1">
-          {logs.map((log, index) => (
-            <li key={index}>{log}</li>
-          ))}
-        </ul>
+        {/* 日志显示区域 */}
+        <div className="col-span-2">
+          <div className="border p-4 rounded-lg h-64 overflow-y-auto bg-gray-50">
+            <h3 className="text-lg font-bold mb-2">日志输出</h3>
+            <ul className="text-sm list-disc pl-5 space-y-1">
+              {logs.map((log, index) => (
+                <li key={index}>{log}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   );

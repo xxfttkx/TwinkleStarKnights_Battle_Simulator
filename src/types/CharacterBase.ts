@@ -75,12 +75,32 @@ export class CharacterBase {
     }
   }
 
+  getBaseEx(): number {
+    if (
+      this.battleSystem.editedExMap[this.data.name] &&
+      this.battleSystem.editedExMap[this.data.name].ex !== 0
+    ) {
+      return this.battleSystem.editedExMap[this.data.name].ex;
+    }
+    return this.data.ex;
+  }
+
   getEx(): number {
-    return this.data.ex; // 特殊技能提升值
+    return this.getBaseEx();
+  }
+
+  getBaseEx_Up(): number {
+    if (
+      this.battleSystem.editedExMap[this.data.name] &&
+      this.battleSystem.editedExMap[this.data.name].ex_up !== 0
+    ) {
+      return this.battleSystem.editedExMap[this.data.name].ex_up;
+    }
+    return this.data.ex_up;
   }
 
   getEx_up(): number {
-    return this.data.ex_up; // 特殊技能提升值
+    return this.getBaseEx_Up(); // 特殊技能提升值
   }
 
   getCTBonus(): number {
@@ -132,9 +152,7 @@ export class CharacterBase {
   }
 
   // 通常攻击增加 EX
-  atkAddEX(): void {
-    this.battleSystem.addEx(
-      (100 + this.getEx_up()) / (this.isCharged ? 3 : 3.75)
-    );
+  atkAddEX(): number {
+    return (100 + this.getEx_up()) / (this.isCharged ? 3 : 3.75);
   }
 }

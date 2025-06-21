@@ -1,3 +1,4 @@
+import emitter from '../eventBus';
 import { CharacterBase } from '../types/CharacterBase';
 
 export class 夏空の一番星_ヴィーナス extends CharacterBase {
@@ -10,6 +11,7 @@ export class 夏空の一番星_ヴィーナス extends CharacterBase {
     );
     this.skill1Active = true;
     this.skill1RemainingCt = 25; // 设置持续时间为 25 CT
+    emitter.emit('ex-up-changed', this.data.name);
     for (const c of team) {
       console.log(`${c.data.name} Forward(7)`);
       c.ctForward(7);

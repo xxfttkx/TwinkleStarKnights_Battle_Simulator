@@ -7,6 +7,11 @@ import { 正義のハッカー_コハルコ } from '../characters/正義のハ�
 import { 舞うは九浄の桜花_ヘレナ } from '../characters/舞うは九浄の桜花_ヘレナ';
 import { 霹靂の射手_梨緒 } from '../characters/霹靂の射手_梨緒';
 
+interface EditedExData {
+  ex: number;
+  ex_up: number;
+}
+
 export class BattleSystem {
   public team: CharacterBase[] = []; // 队伍成员
   private teamEx: number = 0; // 队伍整体 EX 量
@@ -16,6 +21,7 @@ export class BattleSystem {
   afterAction: number[] = [];
   startAction: number = -1; // 最先行动的角色索引
   allowNegativeEx = true;
+  editedExMap: Record<string, EditedExData> = {};
 
   constructor() {
     this.eventEmitter = new EventEmitter();
@@ -23,8 +29,22 @@ export class BattleSystem {
     this.eventEmitter.on('onExIncrease', (amount: number) => {
       this.addEx(amount);
     });
-  }
 
+    emitter.on('ex-edit', (data: [string, number]) => {
+      const [name, value] = data;
+      if (!this.editedExMap[name]) {
+        this.editedExMap[name] = { ex: 0, ex_up: 0 };
+      }
+      this.editedExMap[name].ex = value;
+    });
+    emitter.on('ex-up-edit', (data: [string, number]) => {
+      const [name, value] = data;
+      if (!this.editedExMap[name]) {
+        this.editedExMap[name] = { ex: 0, ex_up: 0 };
+      }
+      this.editedExMap[name].ex_up = value;
+    });
+  }
   createCharacter(char: CharacterData): CharacterBase {
     switch (char.name) {
       case '夏空の一番星_ヴィーナス':
@@ -83,7 +103,7 @@ export class BattleSystem {
     this.team[this.canAction[0]].ctUnison(secondPos);
     emitter.emit(
       'custom-event',
-      `${this.team[this.canAction[0]].data.name} 发动了合体技能！`
+      `${this.team[this.canAction[0]].data.name} 发动了unison!`
     );
   }
 
@@ -112,39 +132,32 @@ export class BattleSystem {
           return false; // 如果该角色已经行动过，则不能再次使用技能
         }
         console.log('是否测试模式:', this.allowNegativeEx);
-        if (skill === 'skill1') {
+        let exCost = 0;
+        if (skill === 'ex1') {
           if (this.teamEx >= c.getEx1Cost() || this.allowNegativeEx) {
-            this.addEx(-c.getEx1Cost()); // 使用技能1时扣除对应的EX量
-            c.atkAddEX();
-            console.log(`${c.data.name} 使用技能1，扣除 ${c.getEx1Cost()} EX`);
+            exCost = c.getEx1Cost();
+            this.addEx(-exCost); // 使用技能1时扣除对应的EX量
             c.useSkill1(this.team);
-            emitter.emit('custom-event', `${c.data.name} 使用了技能1`);
-            if (this.startAction === -1) {
-              this.startAction = this.team.indexOf(c);
-            }
-            this.nextAction(this.team.indexOf(c));
-            return true;
           }
-        } else if (skill === 'skill2') {
+        } else if (skill === 'ex2') {
           if (this.teamEx >= c.getEx2Cost() || this.allowNegativeEx) {
-            this.addEx(-c.getEx2Cost());
-            c.atkAddEX();
+            exCost = c.getEx2Cost();
+            this.addEx(-exCost);
             c.useSkill2(this.team);
-            emitter.emit('custom-event', `${c.data.name} 使用了技能2`);
-            if (this.startAction === -1) {
-              this.startAction = this.team.indexOf(c);
-            }
-            this.nextAction(this.team.indexOf(c));
-            return true;
           }
-        } else if (skill === 'atk') {
-          c.atkAddEX();
-          if (this.startAction === -1) {
-            this.startAction = this.team.indexOf(c);
-          }
-          this.nextAction(this.team.indexOf(c));
-          return true;
         }
+        let addEx = c.atkAddEX();
+        this.addEx(addEx);
+        emitter.emit(
+          'custom-event',
+          `${c.data.name} 使用了 ${skill}(ex - ${exCost}), 普通攻击(ex + ${addEx})`
+        );
+
+        if (this.startAction === -1) {
+          this.startAction = this.team.indexOf(c);
+        }
+        this.nextAction(this.team.indexOf(c));
+        return true;
       }
     }
     return false;
@@ -163,6 +176,10 @@ export class BattleSystem {
       if (this.afterAction.length > 1) {
         //  unison
         this.addEx(40 * this.afterAction.length);
+        emitter.emit(
+          'custom-event',
+          `$ユニゾンアタック(ex + ${40 * this.afterAction.length})`
+        );
       }
       this.startNewTurn();
       return;

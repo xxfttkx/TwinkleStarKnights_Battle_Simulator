@@ -47,7 +47,7 @@ export default function App() {
     <div className="p-6 max-w-5xl mx-auto">
       <h1 className="text-3xl font-bold mb-4">选择你的5人小队</h1>
 
-      <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 gap-4">
+      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
         {characters.map((char: CharacterData) => {
           const isSelected = selected.some(c => c.id === char.id);
           return (
@@ -66,7 +66,7 @@ export default function App() {
                 className="w-16 h-16 mx-auto mb-2 rounded-full"
               />
               <div className="text-lg font-semibold">{char.name}</div>
-              <div className="text-sm text-gray-500">{char.role}</div>
+              <div className="text-sm text-gray-500">{char.type}</div>
               {isSelected && (
                 <div className="mt-2 text-green-600 font-bold">✔ 已选择</div>
               )}
@@ -80,7 +80,7 @@ export default function App() {
         <ul className="list-disc ml-6 text-lg">
           {selected.map(char => (
             <li key={char.id}>
-              {char.name}（{char.role}）
+              {char.name}（{char.type}）
             </li>
           ))}
         </ul>
