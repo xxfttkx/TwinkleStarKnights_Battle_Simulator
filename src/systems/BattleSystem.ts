@@ -132,11 +132,11 @@ export class BattleSystem {
     }
     // todo: ただし、 蛍火 はATKタイプであるにもかかわらず例外的に8CTとなっている。
     let typeToCT: Record<string, number> = {
-      spd: 12,
-      sup: 10,
-      atk: 9,
-      heal: 8,
-      def: 7,
+      SPD: 12,
+      SUP: 10,
+      ATK: 9,
+      HEAL: 8,
+      DEF: 7,
     };
     let allCT = 0;
     for (const index of this.canAction) {
