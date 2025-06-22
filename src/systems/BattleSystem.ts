@@ -66,7 +66,7 @@ export class BattleSystem {
       case '太陽の祝福フィオナ':
         return new 太陽の祝福_フィオナ(char, this.eventEmitter, this);
       default:
-        alert(`未实现 ${char.name} 的角色类`);
+        alert(`キャラクター ${char.name} のクラスはまだ実装されていません`);
         return new CharacterBase(char, this.eventEmitter, this);
     }
   }

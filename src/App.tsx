@@ -55,6 +55,17 @@ export default function App() {
       {battleStarted && battleSystem && (
         <BattleDisplay battleSystem={battleSystem} />
       )}
+      <div className="mt-6 text-center text-sm text-gray-500">
+        貢献したい方はこちらへ：
+        <a
+          href="https://github.com/xxfttkx/TwinkleStarKnights_Battle_Simulator"
+          className="text-blue-600 underline hover:text-blue-800"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+      </div>
     </div>
   );
 }
