@@ -7,6 +7,8 @@ import { 正義のハッカー_コハルコ } from '../characters/正義のハ�
 import { 舞うは九浄の桜花_ヘレナ } from '../characters/舞うは九浄の桜花_ヘレナ';
 import { 霹靂の射手_梨緒 } from '../characters/霹靂の射手_梨緒';
 import { type CharacterData } from '@/types';
+import { 聖夜のキャロル_ルルカ } from '@/characters/聖夜のキャロル_ルルカ';
+import { 太陽の祝福_フィオナ } from '@/characters/太陽の祝福_フィオナ';
 
 interface EditedExData {
   ex: number;
@@ -59,6 +61,10 @@ export class BattleSystem {
         return new 舞うは九浄の桜花_ヘレナ(char, this.eventEmitter, this);
       case '霹靂の射手梨緒':
         return new 霹靂の射手_梨緒(char, this.eventEmitter, this);
+      case '聖夜のキャロルルルカ':
+        return new 聖夜のキャロル_ルルカ(char, this.eventEmitter, this);
+      case '太陽の祝福フィオナ':
+        return new 太陽の祝福_フィオナ(char, this.eventEmitter, this);
       default:
         alert(`未实现 ${char.name} 的角色类`);
         return new CharacterBase(char, this.eventEmitter, this);
