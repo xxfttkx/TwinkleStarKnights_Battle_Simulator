@@ -12,7 +12,7 @@ const fieldMap: Record<string, keyof CharacterData> = {
   最小CT: 'ct',
   陣営: 'faction',
   属性: 'element',
-  star: 'star',
+  '★': 'star',
 };
 
 function convertCharacter(item: Record<string, any>): CharacterData {
