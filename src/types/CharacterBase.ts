@@ -1,6 +1,7 @@
 import type { Equip } from './Equip';
 import { EventEmitter } from '../utils/EventEmitter';
 import type { BattleSystem } from '../systems/BattleSystem';
+import { type CharacterData } from '@/types';
 
 export type CharacterType = 'sup' | 'atk' | 'spd' | 'def' | 'heal';
 // 阵营类型
@@ -13,20 +14,6 @@ export interface Buff {
   name: string; // Buff 名称
   val: number;
   duration: number; // 持续时间（单位：CT）
-}
-
-export interface CharacterData {
-  id: number;
-  name: string;
-  role: string;
-  avatar: string;
-  atk: number; // 攻击力
-  ex: number; // 特殊技能值
-  ex_up: number; // 特殊技能提升值
-  type: string; // 角色类型
-  ct: number;
-  faction: string; // 阵营
-  element: string; // 属性
 }
 
 export class CharacterBase {

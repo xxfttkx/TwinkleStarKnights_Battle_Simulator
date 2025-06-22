@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": ".", // 设置根目录为当前目录
+    "paths": {
+      "@/*": ["src/*"] // @ 别名指向 src 文件夹
+    },
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "target": "ES2020",
     "useDefineForClassFields": true,

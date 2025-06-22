@@ -1,4 +1,4 @@
-import { CharacterBase, type CharacterData } from '../types/CharacterBase';
+import { CharacterBase } from '../types/CharacterBase';
 import { EventEmitter } from '../utils/EventEmitter';
 import emitter from '../eventBus';
 import { 夏空の一番星_ヴィーナス } from '../characters/夏空の一番星_ヴィーナス';
@@ -6,6 +6,7 @@ import { 招福の明星_ヴィーナス } from '../characters/招福の明星_�
 import { 正義のハッカー_コハルコ } from '../characters/正義のハッカー_コハルコ';
 import { 舞うは九浄の桜花_ヘレナ } from '../characters/舞うは九浄の桜花_ヘレナ';
 import { 霹靂の射手_梨緒 } from '../characters/霹靂の射手_梨緒';
+import { type CharacterData } from '@/types';
 
 interface EditedExData {
   ex: number;
@@ -45,19 +46,21 @@ export class BattleSystem {
       this.editedExMap[name].ex_up = value;
     });
   }
+
   createCharacter(char: CharacterData): CharacterBase {
     switch (char.name) {
-      case '夏空の一番星_ヴィーナス':
+      case '夏空の一番星ヴィーナス':
         return new 夏空の一番星_ヴィーナス(char, this.eventEmitter, this);
-      case '招福の明星_ヴィーナス':
+      case '招福の明星ヴィーナス':
         return new 招福の明星_ヴィーナス(char, this.eventEmitter, this);
-      case '正義のハッカー_コハルコ':
+      case '正義のハッカーコハルコ':
         return new 正義のハッカー_コハルコ(char, this.eventEmitter, this);
-      case '舞うは九浄の桜花_ヘレナ':
+      case '舞うは九浄の桜花ヘレナ':
         return new 舞うは九浄の桜花_ヘレナ(char, this.eventEmitter, this);
-      case '霹靂の射手_梨緒':
+      case '霹靂の射手梨緒':
         return new 霹靂の射手_梨緒(char, this.eventEmitter, this);
       default:
+        alert(`未实现 ${char.name} 的角色类`);
         return new CharacterBase(char, this.eventEmitter, this);
     }
   }
