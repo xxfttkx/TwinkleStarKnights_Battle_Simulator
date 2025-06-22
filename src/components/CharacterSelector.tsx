@@ -43,9 +43,9 @@ export default function CharacterSelector({ onChange }: Props) {
   return (
     <div>
       <h1 className="text-3xl font-bold mb-4">編成を選べ～</h1>
-      <div className="flex gap-2">
+      <div className="flex flex-wrap gap-2">
         <select
-          className="border rounded px-2 py-1"
+          className="border rounded px-2 py-1 w-full sm:w-auto"
           value={factionFilter}
           onChange={e => setFactionFilter(e.target.value)}
         >
@@ -58,7 +58,7 @@ export default function CharacterSelector({ onChange }: Props) {
         </select>
 
         <select
-          className="border rounded px-2 py-1"
+          className="border rounded px-2 py-1 w-full sm:w-auto"
           value={typeFilter}
           onChange={e => setTypeFilter(e.target.value)}
         >
@@ -71,7 +71,7 @@ export default function CharacterSelector({ onChange }: Props) {
         </select>
 
         <select
-          className="border rounded px-2 py-1"
+          className="border rounded px-2 py-1 w-full sm:w-auto"
           value={elementFilter}
           onChange={e => setElementFilter(e.target.value)}
         >
@@ -84,7 +84,7 @@ export default function CharacterSelector({ onChange }: Props) {
         </select>
 
         <select
-          className="border rounded px-2 py-1"
+          className="border rounded px-2 py-1 w-full sm:w-auto"
           value={starFilter}
           onChange={e => setStarFilter(e.target.value)}
         >
