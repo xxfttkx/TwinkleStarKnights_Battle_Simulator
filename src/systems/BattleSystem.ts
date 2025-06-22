@@ -149,17 +149,22 @@ export class BattleSystem {
     }
     // ユニゾン参加者全員のチャージCTの平均値（小数点以下切り捨て）
     let chargedCT = Math.floor(allCT / this.canAction.length);
+    let addEX = 100;
     for (const index of this.canAction) {
       let c = this.team[index];
       c.ctChange(chargedCT);
       c.isCharged = true;
+      addEX += c.getEx_up();
     }
+    addEX /= 1.5;
+    this.addEx(addEX);
     const names = this.canAction
       .map(index => this.team[index].data.name)
       .join(', ');
-    emitter.emit('custom-event', `${names} charged!`);
+    emitter.emit('custom-event', `${names} charged!(ex + ${addEX})`);
     this.startNewTurn();
   }
+
   // 增加队伍整体 EX 量
   addEx(amount: number): void {
     this.teamEx = Math.min(this.teamEx + amount, this.teamExMax);
