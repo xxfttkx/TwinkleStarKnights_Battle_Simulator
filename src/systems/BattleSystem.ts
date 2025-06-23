@@ -1,5 +1,4 @@
 import { CharacterBase } from '../types/CharacterBase';
-import { EventEmitter } from '../utils/EventEmitter';
 import emitter from '../eventBus';
 import { 夏空の一番星_ヴィーナス } from '../characters/夏空の一番星_ヴィーナス';
 import { 招福の明星_ヴィーナス } from '../characters/招福の明星_ヴィーナス';
@@ -9,6 +8,7 @@ import { 霹靂の射手_梨緒 } from '../characters/霹靂の射手_梨緒';
 import { type CharacterData } from '@/types';
 import { 聖夜のキャロル_ルルカ } from '@/characters/聖夜のキャロル_ルルカ';
 import { 太陽の祝福_フィオナ } from '@/characters/太陽の祝福_フィオナ';
+import { CharacterRegistry } from '@/utils/CharacterRegistry';
 
 interface EditedExData {
   ex: number;
@@ -19,20 +19,14 @@ export class BattleSystem {
   public team: CharacterBase[] = []; // 队伍成员
   private teamEx: number = 0; // 队伍整体 EX 量
   private teamExMax: number = 400;
-  eventEmitter: EventEmitter;
   canAction: number[] = [];
   afterAction: number[] = [];
   startAction: number = -1; // 最先行动的角色索引
   allowNegativeEx = true;
   editedExMap: Record<string, EditedExData> = {};
+  hp: number = 1.0;
 
   constructor() {
-    this.eventEmitter = new EventEmitter();
-    // 监听 EX 增加事件
-    this.eventEmitter.on('onExIncrease', (amount: number) => {
-      this.addEx(amount);
-    });
-
     emitter.on('ex-edit', (data: [string, number]) => {
       const [name, value] = data;
       if (!this.editedExMap[name]) {
@@ -50,25 +44,10 @@ export class BattleSystem {
   }
 
   createCharacter(char: CharacterData): CharacterBase {
-    switch (char.name) {
-      case '夏空の一番星ヴィーナス':
-        return new 夏空の一番星_ヴィーナス(char, this.eventEmitter, this);
-      case '招福の明星ヴィーナス':
-        return new 招福の明星_ヴィーナス(char, this.eventEmitter, this);
-      case '正義のハッカーコハルコ':
-        return new 正義のハッカー_コハルコ(char, this.eventEmitter, this);
-      case '舞うは九浄の桜花ヘレナ':
-        return new 舞うは九浄の桜花_ヘレナ(char, this.eventEmitter, this);
-      case '霹靂の射手梨緒':
-        return new 霹靂の射手_梨緒(char, this.eventEmitter, this);
-      case '聖夜のキャロルルルカ':
-        return new 聖夜のキャロル_ルルカ(char, this.eventEmitter, this);
-      case '太陽の祝福フィオナ':
-        return new 太陽の祝福_フィオナ(char, this.eventEmitter, this);
-      default:
-        alert(`キャラクター ${char.name} のクラスはまだ実装されていません`);
-        return new CharacterBase(char, this.eventEmitter, this);
-    }
+    const Cls = CharacterRegistry[char.name];
+    if (Cls) return new Cls(char, this);
+    alert(`キャラクター ${char.name} のクラスはまだ実装されていません`);
+    return new CharacterBase(char, this);
   }
 
   init(team: CharacterBase[]): void {
@@ -78,6 +57,7 @@ export class BattleSystem {
   start(): void {
     this.teamEx = 0;
     this.teamExMax = 400; // 最大 EX 量为 400
+    this.hp = 1.0;
     for (const c of this.team) {
       this.addEx(c.getEx()); // 初始化时增加每个角色的 EX 量
       emitter.emit('ex-up-changed', c.data.name); // 通知 EX_UP 变化
@@ -260,5 +240,69 @@ export class BattleSystem {
     } else {
       this.startNewTurn();
     }
+  }
+
+  addHP(amount: number): void {
+    this.hp = Math.min(this.hp + amount, 3.0); // 确保 HP 不超过 3.0
+  }
+
+  isOverHeal(): boolean {
+    return this.hp > 1.0;
+  }
+
+  isFullOverheal(): boolean {
+    return this.hp >= 3.0;
+  }
+
+  getFactionCount(faction: string): number {
+    let count = 0;
+    for (const c of this.team) {
+      if (c.isFaction(faction)) {
+        count++;
+      }
+    }
+    return count;
+  }
+
+  getElementCount(element: string): number {
+    let count = 0;
+    for (const c of this.team) {
+      if (c.isElement(element)) {
+        count++;
+      }
+    }
+    return count;
+  }
+
+  getSecondCharacters(): CharacterBase[] {
+    let secondPos = 999;
+    for (const c of this.team) {
+      if (c.ct != 0) secondPos = Math.min(secondPos, c.ct); // 找到第二个位置的最小 CT
+    }
+    let res = [];
+    for (const c of this.team) {
+      if (c.ct == secondPos) {
+        res.push(c);
+      }
+    }
+    return res;
+  }
+
+  getLastCharacters(): CharacterBase[] {
+    let lastPos = 0;
+    for (const c of this.team) {
+      lastPos = Math.max(lastPos, c.ct);
+    }
+    let res = [];
+    for (const c of this.team) {
+      if (c.ct == lastPos) {
+        res.push(c);
+      }
+    }
+    return res;
+  }
+
+  getTeamIndex(character: CharacterBase): number {
+    return this.team.indexOf(character);
   }
 }

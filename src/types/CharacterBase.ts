@@ -1,5 +1,4 @@
 import type { Equip } from './Equip';
-import { EventEmitter } from '../utils/EventEmitter';
 import type { BattleSystem } from '../systems/BattleSystem';
 import { type CharacterData } from '@/types';
 
@@ -26,19 +25,17 @@ export class CharacterBase {
   };
   isCharged: boolean = false; // 是否充能
   isDead: boolean = false; // 是否死亡
-  protected eventEmitter: EventEmitter;
   battleSystem: BattleSystem;
   buffs: Buff[];
+  exBuff?: {
+    costReduction: number;
+    remainingUses: number;
+  };
 
-  constructor(
-    data: CharacterData,
-    eventEmitter: EventEmitter,
-    battleSystem: BattleSystem
-  ) {
+  constructor(data: CharacterData, battleSystem: BattleSystem) {
     this.data = data;
     this.ct = data.ct;
     this.equips = {};
-    this.eventEmitter = eventEmitter;
     this.battleSystem = battleSystem;
     this.buffs = [];
   }
@@ -52,6 +49,7 @@ export class CharacterBase {
     } else {
       this.ct = this.getCT();
     }
+    // todo: 我也不知道先算buff还是先算ct
     for (const b of this.buffs) {
       b.duration -= 1; // 每次设置 Buff 时减少持续时间
       // console.log(`Buff ${b.name} 的剩余持续时间: ${b.duration}`);
@@ -122,8 +120,34 @@ export class CharacterBase {
     return 200;
   }
 
+  setExBuff(costReduction: number, remainingUses: number): void {
+    //todo: 我不知道啊，就没几个能减ex的吧，逻辑是啥啊
+    this.exBuff = {
+      costReduction,
+      remainingUses,
+    };
+  }
+
+  getActualExCost(baseCost: number): number {
+    if (this.exBuff) {
+      return Math.max(0, baseCost - this.exBuff.costReduction);
+    }
+    return baseCost;
+  }
+
+  consumeExBuffIfAny(): void {
+    if (this.exBuff) {
+      this.exBuff.remainingUses -= 1;
+      if (this.exBuff.remainingUses <= 0) {
+        console.log(`[BUFF结束] ${this.data.name} 的 EX 消耗减免效果已移除`);
+        this.exBuff = undefined;
+      }
+    }
+  }
+
   finishAction(): void {
     this.isCharged = false;
+    this.consumeExBuffIfAny();
   }
 
   isFaction(faction: string): boolean {
@@ -141,5 +165,21 @@ export class CharacterBase {
   // 通常攻击增加 EX
   atkAddEX(): number {
     return (100 + this.getEx_up()) / (this.isCharged ? 3 : 3.75);
+  }
+
+  getLeftCharacter(): CharacterBase | null {
+    const index = this.battleSystem.getTeamIndex(this);
+    if (index <= 0) {
+      return null;
+    }
+    return this.battleSystem.team[index - 1];
+  }
+
+  getRightCharacter(): CharacterBase | null {
+    const index = this.battleSystem.getTeamIndex(this);
+    if (index < 0 || index >= this.battleSystem.team.length - 1) {
+      return null; // 如果是最后一个角色，返回 null
+    }
+    return this.battleSystem.team[index + 1];
   }
 }
