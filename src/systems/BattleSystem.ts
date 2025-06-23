@@ -1,13 +1,6 @@
 import { CharacterBase } from '../types/CharacterBase';
 import emitter from '../eventBus';
-import { 夏空の一番星_ヴィーナス } from '../characters/夏空の一番星_ヴィーナス';
-import { 招福の明星_ヴィーナス } from '../characters/招福の明星_ヴィーナス';
-import { 正義のハッカー_コハルコ } from '../characters/正義のハッカー_コハルコ';
-import { 舞うは九浄の桜花_ヘレナ } from '../characters/舞うは九浄の桜花_ヘレナ';
-import { 霹靂の射手_梨緒 } from '../characters/霹靂の射手_梨緒';
 import { type CharacterData } from '@/types';
-import { 聖夜のキャロル_ルルカ } from '@/characters/聖夜のキャロル_ルルカ';
-import { 太陽の祝福_フィオナ } from '@/characters/太陽の祝福_フィオナ';
 import { CharacterRegistry } from '@/utils/CharacterRegistry';
 
 interface EditedExData {
