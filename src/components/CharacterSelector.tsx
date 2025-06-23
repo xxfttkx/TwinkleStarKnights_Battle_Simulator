@@ -56,8 +56,75 @@ export default function CharacterSelector({ onChange }: Props) {
     onChange(newList); // ✅ 通知父组件
   }
 
+  const presets: Record<string, string[]> = {
+    闇属性队: [
+      '黄昏の超新星トワ先生《黎明》',
+      '智謀の黒き微笑みジュリエッテ',
+      '渇望の武闘天使イングリット',
+      '自称・妹魔王メイプル',
+      '夏のお姉ちゃん♪サーシャ',
+    ],
+    人間队: [
+      '舞うは九浄の桜花ヘレナ',
+      '招福の明星ヴィーナス',
+      '霹靂の射手梨緒',
+      '正義のハッカーコハルコ',
+      '夏空の一番星ヴィーナス',
+    ],
+    试验阵容: [
+      '舞うは九浄の桜花ヘレナ',
+      '招福の明星ヴィーナス',
+      '霹靂の射手梨緒',
+      '正義のハッカーコハルコ',
+      '夏空の一番星ヴィーナス',
+    ],
+  };
+
+  function applyPreset(key: string) {
+    const presetIds = presets[key];
+    const presetChars = presetIds
+      .map(name => allCharacters.find(c => c.name === name))
+      .filter((c): c is CharacterData => !!c); // 过滤 null
+
+    setSelected(presetChars);
+    onChange(presetChars);
+  }
+
   return (
     <div>
+      <div className="mb-4">
+        <span className="font-semibold mr-2">预设编成：</span>
+        <div className="flex flex-col gap-2">
+          {Object.entries(presets).map(([name, presetNames]) => {
+            const presetChars = presetNames
+              .map(n => allCharacters.find(c => c.name === n))
+              .filter((c): c is CharacterData => !!c); // 过滤 null
+
+            return (
+              <div key={name} className="flex items-center gap-4">
+                <button
+                  onClick={() => applyPreset(name)}
+                  className="px-2 py-1 text-sm bg-purple-100 hover:bg-purple-200 rounded"
+                >
+                  {name}
+                </button>
+                <div className="flex gap-1">
+                  {presetChars.map(char => (
+                    <img
+                      key={char.id}
+                      src={char.avatar}
+                      alt={char.name}
+                      className="w-6 h-6 rounded-full border"
+                      title={char.name}
+                    />
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
       <h1 className="text-3xl font-bold mb-4">編成を選べ～</h1>
       <div className="flex flex-wrap gap-2 mb-4">
         <select
