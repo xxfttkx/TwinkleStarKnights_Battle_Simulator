@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { characters as allCharacters } from '@/data/Characters';
 import { type CharacterData } from '@/types';
 
@@ -21,24 +21,49 @@ export default function CharacterSelector({ onChange }: Props) {
     onChange(updated); // ✅ 通知父组件
   };
 
+  const uniqueTypes = useMemo(
+    () => [...new Set(allCharacters.map(c => c.type))],
+    [allCharacters]
+  );
+  const uniqueElements = useMemo(
+    () => [...new Set(allCharacters.map(c => c.element))],
+    [allCharacters]
+  );
+  const uniqueFaction = useMemo(
+    () => [...new Set(allCharacters.map(c => c.faction))],
+    [allCharacters]
+  );
+  const uniqueStar = useMemo(
+    () => [...new Set(allCharacters.map(c => c.star))],
+    [allCharacters]
+  );
   const [typeFilter, setTypeFilter] = useState('');
   const [elementFilter, setElementFilter] = useState('');
   const [factionFilter, setFactionFilter] = useState('');
   const [starFilter, setStarFilter] = useState('');
-
-  const characters = allCharacters.filter(char => {
-    return (
-      (typeFilter === '' || char.type === typeFilter) &&
-      (elementFilter === '' || char.element === elementFilter) &&
-      (factionFilter === '' || char.faction === factionFilter) &&
-      (starFilter === '' || char.star === starFilter)
-    );
-  });
-
-  const uniqueTypes = [...new Set(allCharacters.map(c => c.type))];
-  const uniqueElements = [...new Set(allCharacters.map(c => c.element))];
-  const uniqueFaction = [...new Set(allCharacters.map(c => c.faction))];
-  const uniqueStar = [...new Set(allCharacters.map(c => c.star))];
+  const [sortOrder, setSortOrder] = useState('default'); // 排序方式：'default', 'releaseDateAsc', 'releaseDateDesc'
+  const characters = allCharacters
+    .filter(char => {
+      return (
+        (typeFilter === '' || char.type === typeFilter) &&
+        (elementFilter === '' || char.element === elementFilter) &&
+        (factionFilter === '' || char.faction === factionFilter) &&
+        (starFilter === '' || char.star === starFilter)
+      );
+    })
+    .sort((a, b) => {
+      if (sortOrder === 'releaseDateAsc') {
+        return (
+          new Date(a.releaseDate).getTime() - new Date(b.releaseDate).getTime()
+        ); // 实装顺序
+      }
+      if (sortOrder === 'releaseDateDesc') {
+        return (
+          new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime()
+        ); // 实装倒序
+      }
+      return 0; // 默认顺序
+    });
 
   function moveCharacter(index: number, direction: 'up' | 'down') {
     const newList = [...selected];
@@ -71,12 +96,12 @@ export default function CharacterSelector({ onChange }: Props) {
       '正義のハッカーコハルコ',
       '夏空の一番星ヴィーナス',
     ],
-    试验阵容: [
-      '舞うは九浄の桜花ヘレナ',
-      '招福の明星ヴィーナス',
+    雷属性队: [
+      'おちゃめな副会長セーラ',
       '霹靂の射手梨緒',
-      '正義のハッカーコハルコ',
-      '夏空の一番星ヴィーナス',
+      '太陽の祝福フィオナ',
+      '聖夜のキャロルルルカ',
+      '虹色の魔弾使いリーリア',
     ],
   };
 
@@ -126,59 +151,76 @@ export default function CharacterSelector({ onChange }: Props) {
       </div>
 
       <h1 className="text-3xl font-bold mb-4">編成を選べ～</h1>
-      <div className="flex flex-wrap gap-2 mb-4">
-        <select
-          className="border rounded px-2 py-1 w-full sm:w-auto"
-          value={factionFilter}
-          onChange={e => setFactionFilter(e.target.value)}
-        >
-          <option value="">全ての陣営</option>
-          {uniqueFaction.map(type => (
-            <option key={type} value={type}>
-              {type}
-            </option>
-          ))}
-        </select>
+      <div className="flex justify-between items-center mb-4">
+        {/* 左侧筛选菜单 */}
+        <div className="flex flex-wrap gap-2">
+          <select
+            className="border rounded px-2 py-1 w-full sm:w-auto"
+            value={factionFilter}
+            onChange={e => setFactionFilter(e.target.value)}
+          >
+            <option value="">全ての陣営</option>
+            {uniqueFaction.map(type => (
+              <option key={type} value={type}>
+                {type}
+              </option>
+            ))}
+          </select>
 
-        <select
-          className="border rounded px-2 py-1 w-full sm:w-auto"
-          value={typeFilter}
-          onChange={e => setTypeFilter(e.target.value)}
-        >
-          <option value="">全てのタイプ</option>
-          {uniqueTypes.map(type => (
-            <option key={type} value={type}>
-              {type}
-            </option>
-          ))}
-        </select>
+          <select
+            className="border rounded px-2 py-1 w-full sm:w-auto"
+            value={typeFilter}
+            onChange={e => setTypeFilter(e.target.value)}
+          >
+            <option value="">全てのタイプ</option>
+            {uniqueTypes.map(type => (
+              <option key={type} value={type}>
+                {type}
+              </option>
+            ))}
+          </select>
 
-        <select
-          className="border rounded px-2 py-1 w-full sm:w-auto"
-          value={elementFilter}
-          onChange={e => setElementFilter(e.target.value)}
-        >
-          <option value="">全ての属性</option>
-          {uniqueElements.map(elem => (
-            <option key={elem} value={elem}>
-              {elem}
-            </option>
-          ))}
-        </select>
+          <select
+            className="border rounded px-2 py-1 w-full sm:w-auto"
+            value={elementFilter}
+            onChange={e => setElementFilter(e.target.value)}
+          >
+            <option value="">全ての属性</option>
+            {uniqueElements.map(elem => (
+              <option key={elem} value={elem}>
+                {elem}
+              </option>
+            ))}
+          </select>
 
-        <select
-          className="border rounded px-2 py-1 w-full sm:w-auto"
-          value={starFilter}
-          onChange={e => setStarFilter(e.target.value)}
-        >
-          <option value="">全ての★</option>
-          {uniqueStar.map(elem => (
-            <option key={elem} value={elem}>
-              {elem}
-            </option>
-          ))}
-        </select>
+          <select
+            className="border rounded px-2 py-1 w-full sm:w-auto"
+            value={starFilter}
+            onChange={e => setStarFilter(e.target.value)}
+          >
+            <option value="">全ての★</option>
+            {uniqueStar.map(elem => (
+              <option key={elem} value={elem}>
+                {elem}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* 右侧排序菜单 */}
+        <div className="flex justify-end">
+          <select
+            className="border rounded px-2 py-1 w-full sm:w-auto"
+            value={sortOrder}
+            onChange={e => setSortOrder(e.target.value)}
+          >
+            <option value="default">デフォルト順</option> {/* 默认顺序 */}
+            <option value="releaseDateAsc">実装順</option> {/* 实装顺序 */}
+            <option value="releaseDateDesc">実装逆順</option> {/* 实装倒序 */}
+          </select>
+        </div>
       </div>
+
       <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
         {characters.map((char: CharacterData) => {
           const isSelected = selected.some(c => c.id === char.id);

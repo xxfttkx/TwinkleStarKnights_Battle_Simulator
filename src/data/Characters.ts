@@ -13,6 +13,7 @@ const fieldMap: Record<string, keyof CharacterData> = {
   陣営: 'faction',
   属性: 'element',
   '★': 'star',
+  実装日: 'releaseDate',
 };
 
 function convertCharacter(item: Record<string, any>): CharacterData {

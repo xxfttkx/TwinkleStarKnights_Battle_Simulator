@@ -11,4 +11,5 @@ export interface CharacterData {
   faction: string;
   element: string;
   star: string;
+  releaseDate: string;
 }
