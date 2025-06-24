@@ -45,7 +45,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
         className="w-16 h-16 mx-auto mb-2 rounded-full"
       />
       {/* 可编辑 ex */}
-      <div className="text-sm text-gray-500 flex items-center justify-center gap-2">
+      <div className="text-sm text-gray-500 flex flex-wrap items-center justify-center gap-2">
         <label htmlFor={`ex-${character.data.id}`}>ex:</label>
         <input
           id={`ex-${character.data.id}`}
@@ -68,7 +68,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
       </div>
 
       {/* 可编辑 ex_up */}
-      <div className="text-sm text-gray-500 flex items-center justify-center gap-2">
+      <div className="text-sm text-gray-500 flex flex-wrap items-center justify-center gap-2">
         <label htmlFor={`exup-${character.data.id}`}>ex_up:</label>
         <input
           id={`exup-${character.data.id}`}
@@ -97,7 +97,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
         ct: {character.ct}
       </div>
       {character.ct === 0 && (
-        <div className="mt-4 flex justify-center gap-2">
+        <div className="mt-4 flex flex-wrap justify-center gap-2">
           <button
             className="px-3 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
             onClick={() => useSkill(character, 'ex1')}
