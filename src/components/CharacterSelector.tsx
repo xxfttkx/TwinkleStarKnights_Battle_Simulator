@@ -151,9 +151,9 @@ export default function CharacterSelector({ onChange }: Props) {
       </div>
 
       <h1 className="text-3xl font-bold mb-4">編成を選べ～</h1>
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
         {/* 左侧筛选菜单 */}
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 flex-1 min-w-[250px]">
           <select
             className="border rounded px-2 py-1 w-full sm:w-auto"
             value={factionFilter}
@@ -208,9 +208,9 @@ export default function CharacterSelector({ onChange }: Props) {
         </div>
 
         {/* 右侧排序菜单 */}
-        <div className="flex justify-end">
+        <div className="flex-shrink-0 w-full sm:w-auto">
           <select
-            className="border rounded px-2 py-1 w-full sm:w-auto"
+            className="border rounded px-2 py-1 w-full"
             value={sortOrder}
             onChange={e => setSortOrder(e.target.value)}
           >
