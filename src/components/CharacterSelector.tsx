@@ -239,7 +239,9 @@ export default function CharacterSelector({ onChange }: Props) {
                 alt={`${char.name} 的头像`}
                 className="w-16 h-16 mx-auto mb-2 rounded-full"
               />
-              <div className="text-lg font-semibold">{char.name}</div>
+              <div className="text-lg font-semibold hidden sm:inline">
+                {char.name}
+              </div>
               <div className="text-sm text-gray-500">{char.type}</div>
               {isSelected && (
                 <div className="mt-2 text-green-600 font-bold">✔ 已选择</div>
