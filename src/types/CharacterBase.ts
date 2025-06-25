@@ -182,4 +182,8 @@ export class CharacterBase {
     }
     return this.battleSystem.team[index + 1];
   }
+
+  isStealth(): boolean {
+    return this.buffs.some(buff => buff.target=== 'ステルス');
+  }
 }

@@ -13,6 +13,11 @@ import { 黄昏の超新星_トワ先生_黎明 } from '@/characters/黄昏の�
 import { 自称妹魔王_メイプル } from '@/characters/自称妹魔王_メイプル';
 import { 渇望の武闘天使_イングリット } from '@/characters/渇望の武闘天使_イングリット';
 import { 智謀の黒き微笑み_ジュリエッテ } from '@/characters/智謀の黒き微笑み_ジュリエッテ';
+import { 煌炎の超天使_アナ_煌炎 } from '@/characters/煌炎の超天使アナ《煌炎》';
+import { 甘愛フレグランス_シャルレーヌ } from '@/characters/甘愛フレグランスシャルレーヌ';
+import { はにかみチシャ猫_ヒトリ } from '@/characters/はにかみチシャ猫ヒトリ';
+import { 一途アイドル_メルエル } from '@/characters/一途アイドルメルエル';
+import { 歩く図書館_モネ } from '@/characters/歩く図書館モネ';
 // …其他角色类
 
 type CharacterConstructor = new (
@@ -33,4 +38,9 @@ export const CharacterRegistry: Record<string, CharacterConstructor> = {
   '自称・妹魔王メイプル': 自称妹魔王_メイプル,
   渇望の武闘天使イングリット: 渇望の武闘天使_イングリット,
   智謀の黒き微笑みジュリエッテ: 智謀の黒き微笑み_ジュリエッテ,
+  '煌炎の超天使アナ《煌炎》': 煌炎の超天使_アナ_煌炎,
+  甘愛フレグランスシャルレーヌ: 甘愛フレグランス_シャルレーヌ,
+  はにかみチシャ猫ヒトリ: はにかみチシャ猫_ヒトリ,
+  一途アイドルメルエル: 一途アイドル_メルエル,
+  歩く図書館モネ: 歩く図書館_モネ,
 };
