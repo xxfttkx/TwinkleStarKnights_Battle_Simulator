@@ -50,6 +50,7 @@ export class CharacterBase {
       this.ct = this.getCT();
     }
     // todo: 我也不知道先算buff还是先算ct
+    // 自身の行動CT50％短縮（1CT） 有这种东西存在所以应该是先算ct吧
     for (const b of this.buffs) {
       b.duration -= 1; // 每次设置 Buff 时减少持续时间
       // console.log(`Buff ${b.name} 的剩余持续时间: ${b.duration}`);

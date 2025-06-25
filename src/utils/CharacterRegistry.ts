@@ -18,6 +18,7 @@ import { 甘愛フレグランス_シャルレーヌ } from '@/characters/甘愛
 import { はにかみチシャ猫_ヒトリ } from '@/characters/はにかみチシャ猫ヒトリ';
 import { 一途アイドル_メルエル } from '@/characters/一途アイドルメルエル';
 import { 歩く図書館_モネ } from '@/characters/歩く図書館モネ';
+import { キュートスタイル_レミカ } from '@/characters/キュートスタイルレミカ';
 // …其他角色类
 
 type CharacterConstructor = new (
@@ -43,4 +44,5 @@ export const CharacterRegistry: Record<string, CharacterConstructor> = {
   はにかみチシャ猫ヒトリ: はにかみチシャ猫_ヒトリ,
   一途アイドルメルエル: 一途アイドル_メルエル,
   歩く図書館モネ: 歩く図書館_モネ,
+  キュートスタイルレミカ: キュートスタイル_レミカ,
 };

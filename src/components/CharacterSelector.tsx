@@ -106,7 +106,7 @@ export default function CharacterSelector({ onChange }: Props) {
     火属性队: [
       '煌炎の超天使アナ《煌炎》',
       '甘愛フレグランスシャルレーヌ',
-      'はにかみチシャ猫ヒトリ',
+      'キュートスタイルレミカ',
       '一途アイドルメルエル',
       '歩く図書館モネ',
     ],
