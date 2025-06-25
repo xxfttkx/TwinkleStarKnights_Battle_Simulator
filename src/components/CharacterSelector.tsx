@@ -103,6 +103,13 @@ export default function CharacterSelector({ onChange }: Props) {
       '聖夜のキャロルルルカ',
       '虹色の魔弾使いリーリア',
     ],
+    火属性队: [
+      '煌炎の超天使アナ《煌炎》',
+      '甘愛フレグランスシャルレーヌ',
+      'はにかみチシャ猫ヒトリ',
+      '一途アイドルメルエル',
+      '歩く図書館モネ',
+    ],
   };
 
   function applyPreset(key: string) {
@@ -236,7 +243,7 @@ export default function CharacterSelector({ onChange }: Props) {
             >
               <img
                 src={char.avatar}
-                alt={`${char.name} 的头像`}
+                alt={`${char.name}`}
                 className="w-16 h-16 mx-auto mb-2 rounded-full"
               />
               <div className="text-lg font-semibold hidden sm:inline">
