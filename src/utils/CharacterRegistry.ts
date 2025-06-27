@@ -19,6 +19,8 @@ import { はにかみチシャ猫_ヒトリ } from '@/characters/はにかみチ
 import { 一途アイドル_メルエル } from '@/characters/一途アイドルメルエル';
 import { 歩く図書館_モネ } from '@/characters/歩く図書館モネ';
 import { キュートスタイル_レミカ } from '@/characters/キュートスタイルレミカ';
+import { 流星の姫君_フィオナ } from '@/characters/流星の姫君フィオナ';
+import { グロウンヒーロー_アポロ_大人 } from '@/characters/グロウンヒーロー_アポロ_大人';
 // …其他角色类
 
 type CharacterConstructor = new (
@@ -45,4 +47,6 @@ export const CharacterRegistry: Record<string, CharacterConstructor> = {
   一途アイドルメルエル: 一途アイドル_メルエル,
   歩く図書館モネ: 歩く図書館_モネ,
   キュートスタイルレミカ: キュートスタイル_レミカ,
+  流星の姫君フィオナ: 流星の姫君_フィオナ,
+  'グロウンヒーローアポロ(大人)': グロウンヒーロー_アポロ_大人,
 };
