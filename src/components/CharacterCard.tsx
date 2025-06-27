@@ -39,11 +39,19 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
 
   return (
     <div className="border p-4 rounded-lg text-center space-y-1">
-      <img
-        src={character.data.avatar}
-        alt={`${character.data.name} 的头像`}
-        className="w-16 h-16 mx-auto mb-2 rounded-full"
-      />
+      <div className="relative inline-block group">
+        <img
+          src={character.data.avatar}
+          alt={`${character.data.name}`}
+          className="w-16 h-16 mx-auto mb-2 rounded-full"
+        />
+        {/* 技能提示框 */}
+        <div className="absolute z-10 bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 text-sm text-white bg-black bg-opacity-80 rounded-lg opacity-0 group-hover:opacity-100 transition pointer-events-none w-96 whitespace-pre-wrap font-mono">
+          {character.useSkill1.toString()}
+          {'\n\n'}
+          {character.useSkill2.toString()}
+        </div>
+      </div>
       {/* 可编辑 ex */}
       <div className="text-sm text-gray-500 flex flex-wrap items-center justify-center gap-2">
         <label htmlFor={`ex-${character.data.id}`}>ex:</label>
@@ -52,7 +60,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
           type="number"
           value={ex}
           onChange={handleExChange}
-          className="h-5 border rounded px-2 py-1 w-20 text-center text-black"
+          className="h-5 border rounded px-2 py-1 w-16 text-center text-black"
         />
         <button
           type="button"
@@ -75,7 +83,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
           type="number"
           value={exUp}
           onChange={handleExUpChange}
-          className="h-5 border rounded px-2 py-1 w-20 text-center text-black"
+          className="h-5 border rounded px-2 py-1 w-16 text-center text-black"
         />
         <button
           type="button"
