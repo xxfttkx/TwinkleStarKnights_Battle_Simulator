@@ -21,6 +21,7 @@ import { 歩く図書館_モネ } from '@/characters/歩く図書館モネ';
 import { キュートスタイル_レミカ } from '@/characters/キュートスタイルレミカ';
 import { 流星の姫君_フィオナ } from '@/characters/流星の姫君フィオナ';
 import { グロウンヒーロー_アポロ_大人 } from '@/characters/グロウンヒーロー_アポロ_大人';
+import { 最幸の真魔法少女_サチ_運命 } from '@/characters/最幸の真魔法少女_サチ_運命';
 // …其他角色类
 
 type CharacterConstructor = new (
@@ -49,4 +50,5 @@ export const CharacterRegistry: Record<string, CharacterConstructor> = {
   キュートスタイルレミカ: キュートスタイル_レミカ,
   流星の姫君フィオナ: 流星の姫君_フィオナ,
   'グロウンヒーローアポロ(大人)': グロウンヒーロー_アポロ_大人,
+  '最幸の真魔法少女サチ《運命》': 最幸の真魔法少女_サチ_運命,
 };
