@@ -262,7 +262,7 @@ export default function CharacterSelector({ onChange }: Props) {
               </div>
               <div className="text-sm text-gray-500">{char.type}</div>
               {isSelected && (
-                <div className="mt-2 text-green-600 font-bold">✔ 已选择</div>
+                <div className="mt-2 text-green-600 font-bold">✔ 選択済み</div>
               )}
             </div>
           );
@@ -270,7 +270,7 @@ export default function CharacterSelector({ onChange }: Props) {
       </div>
 
       <div className="mt-6">
-        <h2 className="text-xl font-bold mb-2">已选择队伍：</h2>
+        <h2 className="text-xl font-bold mb-2">現在のチーム：</h2>
         <ul className="space-y-2">
           {selected.map((char, index) => (
             <li
