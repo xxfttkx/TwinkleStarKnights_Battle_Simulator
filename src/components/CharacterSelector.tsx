@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { characters as allCharacters } from '@/data/Characters';
 import { type CharacterData } from '@/types';
+import { CharacterRegistry } from '@/utils/CharacterRegistry';
 
 interface Props {
   onChange: (selected: CharacterData[]) => void;
@@ -231,16 +232,26 @@ export default function CharacterSelector({ onChange }: Props) {
       <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
         {characters.map((char: CharacterData) => {
           const isSelected = selected.some(c => c.id === char.id);
+          const isImplemented = CharacterRegistry.hasOwnProperty(char.name);
           return (
             <div
               key={char.id}
-              className={`border p-4 rounded-xl text-center cursor-pointer transition hover:shadow-lg ${
-                isSelected
-                  ? 'bg-blue-200 border-blue-500'
-                  : 'bg-white border-gray-300'
-              }`}
+              className={`border p-4 rounded-xl text-center cursor-pointer transition hover:shadow-lg
+                ${
+                  isSelected
+                    ? 'bg-blue-200 border-blue-500'
+                    : 'bg-white border-gray-300'
+                }
+              `}
               onClick={() => toggleSelect(char)}
             >
+              <div className="relative">
+                {!isImplemented && (
+                  <div className="absolute top-0 -right-3 bg-green-100 text-black text-xs px-2 py-0.5 rounded-full shadow">
+                    未実装
+                  </div>
+                )}
+              </div>
               <img
                 src={char.avatar}
                 alt={`${char.name}`}
