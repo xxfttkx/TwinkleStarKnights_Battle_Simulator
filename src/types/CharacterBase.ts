@@ -170,6 +170,10 @@ export class CharacterBase {
     return this.data.element === element;
   }
 
+  isType(type: string): boolean {
+    return this.data.type === type;
+  }
+
   setBuff(buff: Buff): void {
     this.buffs.push(buff);
   }
