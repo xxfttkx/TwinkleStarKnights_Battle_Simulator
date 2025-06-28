@@ -24,6 +24,7 @@ import { グロウンヒーロー_アポロ_大人 } from '@/characters/グロ�
 import { 最幸の真魔法少女_サチ_運命 } from '@/characters/最幸の真魔法少女_サチ_運命';
 import { 蒐集の魔女_トレジアンナ } from '@/characters/蒐集の魔女_トレジアンナ';
 import { 白うさぎの純情_蘭美 } from '@/characters/白うさぎの純情_蘭美';
+import { 嵐を翔る射手_聖沙 } from '@/characters/嵐を翔る射手_聖沙';
 // …其他角色类
 
 type CharacterConstructor = new (
@@ -55,4 +56,5 @@ export const CharacterRegistry: Record<string, CharacterConstructor> = {
   '最幸の真魔法少女サチ《運命》': 最幸の真魔法少女_サチ_運命,
   蒐集の魔女トレジアンナ: 蒐集の魔女_トレジアンナ,
   白うさぎの純情蘭美: 白うさぎの純情_蘭美,
+  嵐を翔る射手聖沙: 嵐を翔る射手_聖沙,
 };
