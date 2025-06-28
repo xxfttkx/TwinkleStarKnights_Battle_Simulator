@@ -30,6 +30,7 @@ import { 万成の幼天使_セシア } from '@/characters/万成の幼天使_�
 import { お転婆バサラ姫_パルミエ } from '@/characters/お転婆バサラ姫_パルミエ';
 import { 美の冒涜者_ヴァレリー } from '@/characters/美の冒涜者_ヴァレリー';
 import { 夏色マジカル_リーリア } from '@/characters/夏色マジカル_リーリア';
+import { ハローフィクサー_ヴィーナス } from '@/characters/ハローフィクサー_ヴィーナス';
 // …其他角色类
 
 type CharacterConstructor = new (
@@ -67,4 +68,5 @@ export const CharacterRegistry: Record<string, CharacterConstructor> = {
   お転婆バサラ姫パルミエ: お転婆バサラ姫_パルミエ,
   美の冒涜者ヴァレリー: 美の冒涜者_ヴァレリー,
   '夏色マジカル☆リーリア': 夏色マジカル_リーリア,
+  ハローフィクサーヴィーナス: ハローフィクサー_ヴィーナス,
 };
