@@ -176,6 +176,8 @@ export class BattleSystem {
             exCost = c.getEx1Cost();
             exCost = c.getActualExCost(exCost);
             this.addEx(-exCost); // 使用技能1时扣除对应的EX量
+            // 暂时这样处理ex buff，可能要改，也可能不改了
+            c.afterSkill();
             c.useSkill1(this.team);
           }
         } else if (skill === 'ex2') {
@@ -184,6 +186,7 @@ export class BattleSystem {
             exCost = c.getEx2Cost();
             exCost = c.getActualExCost(exCost);
             this.addEx(-exCost);
+            c.afterSkill();
             c.useSkill2(this.team);
           }
         }

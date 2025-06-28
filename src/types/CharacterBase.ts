@@ -130,7 +130,7 @@ export class CharacterBase {
   }
 
   setExBuff(costReduction: number, remainingUses: number): void {
-    //todo: 我不知道啊，就没几个能减ex的吧，逻辑是啥啊
+    // 次ターン以降EXスキル1回発動まで
     this.exBuff = {
       costReduction,
       remainingUses,
@@ -140,8 +140,6 @@ export class CharacterBase {
   getActualExCost(baseCost: number): number {
     if (this.exBuff) {
       return Math.max(0, baseCost - this.exBuff.costReduction);
-      // 回合结束时 consumeExBuffIfAny
-      // this.consumeExBuffIfAny();
     }
     return baseCost;
   }
@@ -157,7 +155,6 @@ export class CharacterBase {
 
   finishAction(): void {
     this.isCharged = false;
-    this.consumeExBuffIfAny();
   }
 
   endUnison(): void {
@@ -200,5 +197,9 @@ export class CharacterBase {
 
   isStealth(): boolean {
     return this.buffs.some(buff => buff.target === 'ステルス');
+  }
+
+  afterSkill(): void {
+    this.consumeExBuffIfAny();
   }
 }
