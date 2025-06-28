@@ -25,6 +25,7 @@ import { 最幸の真魔法少女_サチ_運命 } from '@/characters/最幸の�
 import { 蒐集の魔女_トレジアンナ } from '@/characters/蒐集の魔女_トレジアンナ';
 import { 白うさぎの純情_蘭美 } from '@/characters/白うさぎの純情_蘭美';
 import { 嵐を翔る射手_聖沙 } from '@/characters/嵐を翔る射手_聖沙';
+import { 命脈の幼アバター_アルモタヘル_ちぃ } from '@/characters/命脈の幼アバター_アルモタヘル_ちぃ';
 // …其他角色类
 
 type CharacterConstructor = new (
@@ -57,4 +58,5 @@ export const CharacterRegistry: Record<string, CharacterConstructor> = {
   蒐集の魔女トレジアンナ: 蒐集の魔女_トレジアンナ,
   白うさぎの純情蘭美: 白うさぎの純情_蘭美,
   嵐を翔る射手聖沙: 嵐を翔る射手_聖沙,
+  '命脈の幼アバターアルモタヘル（ちぃ）': 命脈の幼アバター_アルモタヘル_ちぃ,
 };
