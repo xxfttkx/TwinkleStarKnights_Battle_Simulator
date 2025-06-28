@@ -27,6 +27,8 @@ import { 白うさぎの純情_蘭美 } from '@/characters/白うさぎの純情
 import { 嵐を翔る射手_聖沙 } from '@/characters/嵐を翔る射手_聖沙';
 import { 命脈の幼アバター_アルモタヘル_ちぃ } from '@/characters/命脈の幼アバター_アルモタヘル_ちぃ';
 import { 万成の幼天使_セシア } from '@/characters/万成の幼天使_セシア';
+import { お転婆バサラ姫_パルミエ } from '@/characters/お転婆バサラ姫_パルミエ';
+import { 美の冒涜者_ヴァレリー } from '@/characters/美の冒涜者_ヴァレリー';
 // …其他角色类
 
 type CharacterConstructor = new (
@@ -61,5 +63,6 @@ export const CharacterRegistry: Record<string, CharacterConstructor> = {
   嵐を翔る射手聖沙: 嵐を翔る射手_聖沙,
   '命脈の幼アバターアルモタヘル（ちぃ）': 命脈の幼アバター_アルモタヘル_ちぃ,
   万成の幼天使セシア: 万成の幼天使_セシア,
-  お転婆バサラ姫パルミエ: 万成の幼天使_セシア,
+  お転婆バサラ姫パルミエ: お転婆バサラ姫_パルミエ,
+  美の冒涜者ヴァレリー: 美の冒涜者_ヴァレリー,
 };
