@@ -61,4 +61,5 @@ export const CharacterRegistry: Record<string, CharacterConstructor> = {
   嵐を翔る射手聖沙: 嵐を翔る射手_聖沙,
   '命脈の幼アバターアルモタヘル（ちぃ）': 命脈の幼アバター_アルモタヘル_ちぃ,
   万成の幼天使セシア: 万成の幼天使_セシア,
+  お転婆バサラ姫パルミエ: 万成の幼天使_セシア,
 };
