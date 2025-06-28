@@ -43,6 +43,14 @@ export class CharacterBase {
   // 通用方法
   useSkill1(_team: CharacterBase[]): void {}
   useSkill2(_team: CharacterBase[]): void {}
+
+  canUseSkill1(): boolean {
+    return true;
+  }
+  canUseSkill2(): boolean {
+    return true;
+  }
+
   updateCT(): void {
     if (this.ct > 0) {
       this.ct -= 1;
@@ -132,6 +140,8 @@ export class CharacterBase {
   getActualExCost(baseCost: number): number {
     if (this.exBuff) {
       return Math.max(0, baseCost - this.exBuff.costReduction);
+      // 回合结束时 consumeExBuffIfAny
+      // this.consumeExBuffIfAny();
     }
     return baseCost;
   }
@@ -140,7 +150,6 @@ export class CharacterBase {
     if (this.exBuff) {
       this.exBuff.remainingUses -= 1;
       if (this.exBuff.remainingUses <= 0) {
-        console.log(`[BUFF结束] ${this.data.name} 的 EX 消耗减免效果已移除`);
         this.exBuff = undefined;
       }
     }

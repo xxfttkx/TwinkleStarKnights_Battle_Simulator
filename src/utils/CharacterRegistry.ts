@@ -26,6 +26,7 @@ import { 蒐集の魔女_トレジアンナ } from '@/characters/蒐集の魔女
 import { 白うさぎの純情_蘭美 } from '@/characters/白うさぎの純情_蘭美';
 import { 嵐を翔る射手_聖沙 } from '@/characters/嵐を翔る射手_聖沙';
 import { 命脈の幼アバター_アルモタヘル_ちぃ } from '@/characters/命脈の幼アバター_アルモタヘル_ちぃ';
+import { 万成の幼天使_セシア } from '@/characters/万成の幼天使_セシア';
 // …其他角色类
 
 type CharacterConstructor = new (
@@ -59,4 +60,5 @@ export const CharacterRegistry: Record<string, CharacterConstructor> = {
   白うさぎの純情蘭美: 白うさぎの純情_蘭美,
   嵐を翔る射手聖沙: 嵐を翔る射手_聖沙,
   '命脈の幼アバターアルモタヘル（ちぃ）': 命脈の幼アバター_アルモタヘル_ちぃ,
+  万成の幼天使セシア: 万成の幼天使_セシア,
 };

@@ -172,13 +172,17 @@ export class BattleSystem {
         let exCost = 0;
         if (skill === 'ex1') {
           if (this.teamEx >= c.getEx1Cost() || this.allowNegativeEx) {
+            if (!c.canUseSkill1()) return false;
             exCost = c.getEx1Cost();
+            exCost = c.getActualExCost(exCost);
             this.addEx(-exCost); // 使用技能1时扣除对应的EX量
             c.useSkill1(this.team);
           }
         } else if (skill === 'ex2') {
           if (this.teamEx >= c.getEx2Cost() || this.allowNegativeEx) {
+            if (!c.canUseSkill2()) return false;
             exCost = c.getEx2Cost();
+            exCost = c.getActualExCost(exCost);
             this.addEx(-exCost);
             c.useSkill2(this.team);
           }

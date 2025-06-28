@@ -5,7 +5,7 @@ export class 嵐を翔る射手_聖沙 extends CharacterBase {
   useSkill1(_team: CharacterBase[]): void {
     this.setBuff({
       target: 'ex_up',
-      name: '嵐を翔る射手_聖沙  ',
+      name: '嵐を翔る射手_聖沙',
       val: 40,
       duration: 20,
     });
