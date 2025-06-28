@@ -151,6 +151,11 @@ export class CharacterBase {
     this.consumeExBuffIfAny();
   }
 
+  endUnison(): void {
+    // unison也会消isCharged
+    this.isCharged = false;
+  }
+
   isFaction(faction: string): boolean {
     return this.data.faction === faction;
   }
@@ -185,6 +190,6 @@ export class CharacterBase {
   }
 
   isStealth(): boolean {
-    return this.buffs.some(buff => buff.target=== 'ステルス');
+    return this.buffs.some(buff => buff.target === 'ステルス');
   }
 }

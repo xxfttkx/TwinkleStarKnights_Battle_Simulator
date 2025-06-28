@@ -211,12 +211,15 @@ export class BattleSystem {
     if (this.afterAction.length === this.canAction.length) {
       // 如果所有角色都行动完毕，开始新回合
       if (this.afterAction.length > 1) {
-        //  unison
+        //  unison attack
         this.addEx(40 * this.afterAction.length);
         emitter.emit(
           'custom-event',
           `ユニゾンアタック(ex + ${40 * this.afterAction.length})`
         );
+        for (const i of this.afterAction) {
+          this.team[i].endUnison();
+        }
       }
       this.startNewTurn();
       return;
