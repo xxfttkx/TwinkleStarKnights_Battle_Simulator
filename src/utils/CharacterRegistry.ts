@@ -23,6 +23,7 @@ import { 流星の姫君_フィオナ } from '@/characters/流星の姫君フィ
 import { グロウンヒーロー_アポロ_大人 } from '@/characters/グロウンヒーロー_アポロ_大人';
 import { 最幸の真魔法少女_サチ_運命 } from '@/characters/最幸の真魔法少女_サチ_運命';
 import { 蒐集の魔女_トレジアンナ } from '@/characters/蒐集の魔女_トレジアンナ';
+import { 白うさぎの純情_蘭美 } from '@/characters/白うさぎの純情_蘭美';
 // …其他角色类
 
 type CharacterConstructor = new (
@@ -53,4 +54,5 @@ export const CharacterRegistry: Record<string, CharacterConstructor> = {
   'グロウンヒーローアポロ(大人)': グロウンヒーロー_アポロ_大人,
   '最幸の真魔法少女サチ《運命》': 最幸の真魔法少女_サチ_運命,
   蒐集の魔女トレジアンナ: 蒐集の魔女_トレジアンナ,
+  白うさぎの純情蘭美: 白うさぎの純情_蘭美,
 };
