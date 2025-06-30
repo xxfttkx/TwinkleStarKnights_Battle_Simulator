@@ -32,6 +32,7 @@ import { 美の冒涜者_ヴァレリー } from '@/characters/美の冒涜者_�
 import { 夏色マジカル_リーリア } from '@/characters/夏色マジカル_リーリア';
 import { ハローフィクサー_ヴィーナス } from '@/characters/ハローフィクサー_ヴィーナス';
 import { お人好し吸血鬼_ベアトリス } from '@/characters/お人好し吸血鬼_ベアトリス';
+import { アイシクルノヴァ_サーシャ_絶氷 } from '@/characters/アイシクルノヴァ_サーシャ_絶氷';
 // …其他角色类
 
 type CharacterConstructor = new (
@@ -71,4 +72,5 @@ export const CharacterRegistry: Record<string, CharacterConstructor> = {
   '夏色マジカル☆リーリア': 夏色マジカル_リーリア,
   ハローフィクサーヴィーナス: ハローフィクサー_ヴィーナス,
   お人好し吸血鬼ベアトリス: お人好し吸血鬼_ベアトリス,
+  'アイシクルノヴァサーシャ《絶氷》': アイシクルノヴァ_サーシャ_絶氷,
 };
