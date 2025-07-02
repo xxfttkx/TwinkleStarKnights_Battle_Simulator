@@ -16,9 +16,27 @@ export default function BattleDisplay({ battleSystem }: BattleDisplayProps) {
   );
 
   const appendLog = useCallback((msg: string) => {
-    console.log(`日志: ${msg}`); // 控制台输出日志
-    // 更新日志状态
-    setLogs(prev => [...prev, msg]);
+    setLogs(prev => {
+      const last = prev[prev.length - 1];
+
+      // 如果新日志是 "all forward ct 1"
+      if (msg === 'all forward ct 1') {
+        const match = last?.match(/^all forward ct 1 × (\d+)$/);
+        if (match) {
+          // 如果已经是合并记录，更新次数
+          const count = parseInt(match[1], 10) + 1;
+          return [...prev.slice(0, -1), `all forward ct 1 × ${count}`];
+        } else if (last === 'all forward ct 1') {
+          // 如果上一个是第一次遇到，变成 ×2
+          return [...prev.slice(0, -1), 'all forward ct 1 × 2'];
+        } else {
+          // 普通追加
+          return [...prev, msg];
+        }
+      }
+      // 其他日志原样追加
+      return [...prev, msg];
+    });
   }, []);
 
   useEffect(() => {
@@ -108,7 +126,7 @@ export default function BattleDisplay({ battleSystem }: BattleDisplayProps) {
         {/* 日志显示区域 */}
         <div className="col-span-2">
           <div className="border p-4 rounded-lg h-64 overflow-y-auto bg-gray-50">
-            <h3 className="text-lg font-bold mb-2">日志输出</h3>
+            <h3 className="text-lg font-bold mb-2">Log</h3>
             <ul className="text-sm list-disc pl-5 space-y-1">
               {logs.map((log, index) => (
                 <li key={index}>{log}</li>
