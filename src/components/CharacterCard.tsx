@@ -16,14 +16,23 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
   const [exUp, setExUp] = useState(String(character.getEx_up()));
 
   useEffect(() => {
-    const handler = (name: string) => {
+    const exChange = (name: string) => {
+      if (name === character.data.name) {
+        setExUp(String(character.getEx()));
+      }
+    };
+    const exUpChange = (name: string) => {
       if (name === character.data.name) {
         setExUp(String(character.getEx_up()));
       }
     };
 
-    emitter.on('ex-up-changed', handler);
-    return () => emitter.off('ex-up-changed', handler);
+    emitter.on('ex-changed', exChange);
+    emitter.on('ex-up-changed', exUpChange);
+    return () => {
+      emitter.off('ex-changed', exChange);
+      emitter.off('ex-up-changed', exUpChange);
+    };
   }, [character]);
 
   // 输入框内容变化处理

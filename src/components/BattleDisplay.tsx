@@ -63,6 +63,12 @@ export default function BattleDisplay({ battleSystem }: BattleDisplayProps) {
       {/* 第二行：按钮区域 */}
       <div className="my-4 flex justify-center gap-4">
         <button
+          onClick={() => battleSystem.autoSetEX()}
+          className="px-4 py-2 bg-purple-500 text-white rounded hover:bg-gray-600"
+        >
+          AutoSetEX
+        </button>
+        <button
           onClick={() => battleSystem.unison()}
           className="px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600"
         >

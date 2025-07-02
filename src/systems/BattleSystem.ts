@@ -26,6 +26,7 @@ export class BattleSystem {
         this.editedExMap[name] = { ex: 0, ex_up: 0 };
       }
       this.editedExMap[name].ex = value;
+      emitter.emit('ex-changed', name); // 通知 EX 变化
     });
     emitter.on('ex-up-edit', (data: [string, number]) => {
       const [name, value] = data;
@@ -33,6 +34,7 @@ export class BattleSystem {
         this.editedExMap[name] = { ex: 0, ex_up: 0 };
       }
       this.editedExMap[name].ex_up = value;
+      emitter.emit('ex-up-changed', name); // 通知 EX_UP 变化
     });
   }
 
@@ -72,6 +74,17 @@ export class BattleSystem {
       }
     }
     return this.canAction.length !== 0;
+  }
+
+  autoSetEX(): void {
+    if (this.team.length <= 0) {
+      alert('チームが空です！');
+      return;
+    }
+    for (const c of this.team) {
+      emitter.emit('ex-edit', [c.data.name, 400]);
+      emitter.emit('ex-up-edit', [c.data.name, 150]); // 通知 EX_UP 变化
+    }
   }
 
   unison(): void {
