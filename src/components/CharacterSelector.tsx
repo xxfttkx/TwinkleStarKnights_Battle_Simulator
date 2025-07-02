@@ -100,7 +100,7 @@ export default function CharacterSelector({ onChange }: Props) {
     神族队: [
       '煌炎の超天使アナ《煌炎》',
       '初めての海ルリエル',
-      '一途アイドルメルエル',
+      '雷薙の晴天使ウズメイア',
       '碧水のミューズロロット',
       '万成の幼天使セシア',
     ],

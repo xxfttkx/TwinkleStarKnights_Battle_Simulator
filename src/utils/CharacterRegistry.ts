@@ -35,6 +35,8 @@ import { お人好し吸血鬼_ベアトリス } from '@/characters/お人好し
 import { アイシクルノヴァ_サーシャ_絶氷 } from '@/characters/アイシクルノヴァ_サーシャ_絶氷';
 import { 一意専心_メルエル } from '@/characters/一意専心メルエル';
 import { 初めての海_ルリエル } from '@/characters/初めての海_ルリエル';
+import { 碧水のミューズ_ロロット } from '@/characters/碧水のミューズ_ロロット';
+import { 雷薙の晴天使_ウズメイア } from '@/characters/雷薙の晴天使_ウズメイア';
 // …其他角色类
 
 type CharacterConstructor = new (
@@ -77,5 +79,6 @@ export const CharacterRegistry: Record<string, CharacterConstructor> = {
   'アイシクルノヴァサーシャ《絶氷》': アイシクルノヴァ_サーシャ_絶氷,
   一意専心メルエル: 一意専心_メルエル,
   初めての海ルリエル: 初めての海_ルリエル,
-  碧水のミューズロロット: 初めての海_ルリエル,
+  碧水のミューズロロット: 碧水のミューズ_ロロット,
+  雷薙の晴天使ウズメイア: 雷薙の晴天使_ウズメイア,
 };
