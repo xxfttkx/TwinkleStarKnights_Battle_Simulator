@@ -277,6 +277,11 @@ export class BattleSystem {
     return count;
   }
 
+  getFactionOrElementCount(faction: string, element: string): number {
+    return this.team.filter(c => c.isFaction(faction) || c.isElement(element))
+      .length;
+  }
+
   getSecondCharacters(): CharacterBase[] {
     let secondPos = 999;
     for (const c of this.team) {
