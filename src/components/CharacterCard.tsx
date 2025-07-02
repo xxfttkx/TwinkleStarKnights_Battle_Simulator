@@ -18,7 +18,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
   useEffect(() => {
     const exChange = (name: string) => {
       if (name === character.data.name) {
-        setExUp(String(character.getEx()));
+        setEx(String(character.getEx()));
       }
     };
     const exUpChange = (name: string) => {

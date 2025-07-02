@@ -87,8 +87,10 @@ export default function BattleDisplay({ battleSystem }: BattleDisplayProps) {
         <div className="col-span-1">
           <h2 className="text-xl font-bold mb-4">队伍状态</h2>
           <div className="border p-4 rounded-lg mb-4">
-            <p className="text-lg">队伍整体 EX 量：</p>
-            <p className="text-2xl font-bold text-blue-600">{teamEx}</p>
+            <p className="text-lg">チーム全体のEXゲージ総量：</p>
+            <p className="text-2xl font-bold text-blue-600">
+              {Math.floor(teamEx)}
+            </p>
           </div>
           <label className="flex items-center mt-2 text-sm text-gray-600">
             <input
