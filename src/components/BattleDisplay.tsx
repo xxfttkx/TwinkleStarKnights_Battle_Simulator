@@ -125,7 +125,7 @@ export default function BattleDisplay({ battleSystem }: BattleDisplayProps) {
         </div>
         {/* 日志显示区域 */}
         <div className="col-span-2">
-          <div className="border p-4 rounded-lg h-64 overflow-y-auto bg-gray-50 touch-action: pan-y">
+          <div className="border p-4 rounded-lg h-64 overflow-y-auto bg-gray-50">
             <h3 className="text-lg font-bold mb-2">Log</h3>
             <ul className="text-sm list-disc pl-5 space-y-1">
               {logs.map((log, index) => (
