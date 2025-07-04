@@ -106,7 +106,10 @@ export class BattleSystem {
     for (const c of this.team)
       if (c.ct != 0) secondPos = Math.min(secondPos, c.ct); // 找到第二个位置的最小 CT
     currChar.ctChange(secondPos);
-    emitter.emit('custom-event', `${currChar.data.name} 发动了unison!`);
+    emitter.emit(
+      'custom-event',
+      `${currChar.data.name} がユニゾンを発動した！`
+    );
     this.startNewTurn();
   }
 
@@ -207,7 +210,7 @@ export class BattleSystem {
         this.addEx(addEx);
         emitter.emit(
           'custom-event',
-          `${c.data.name} 使用了 ${skill}(ex - ${exCost}), 普通攻击(ex + ${addEx})`
+          `${c.data.name} は ${skill}（EX -${exCost}）を使用し、通常攻撃で EX +${addEx} を獲得した。`
         );
 
         if (this.startAction === -1) {
