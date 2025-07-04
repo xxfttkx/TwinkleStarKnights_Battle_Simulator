@@ -210,7 +210,11 @@ export class BattleSystem {
         this.addEx(addEx);
         emitter.emit(
           'custom-event',
-          `${c.data.name} が ${skill}（EX -${exCost}）使用、通常攻撃で（EX +${addEx}）`
+          `${
+            c.data.name
+          } が ${skill}（EX -${exCost}）使用、通常攻撃で（EX +${Math.floor(
+            addEx
+          )}）`
         );
 
         if (this.startAction === -1) {
