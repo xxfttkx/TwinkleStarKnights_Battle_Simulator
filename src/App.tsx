@@ -48,7 +48,7 @@ export default function App() {
           className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
           onClick={startBattle}
         >
-          开始战斗
+          バトル開始
         </button>
       </div>
       {/* 渲染 BattleDisplay 组件 */}

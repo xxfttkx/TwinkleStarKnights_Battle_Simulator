@@ -68,7 +68,7 @@ export default function BattleDisplay({ battleSystem }: BattleDisplayProps) {
   return (
     <div className="mt-6 space-y-6">
       {/* 队伍成员 */}
-      <h2 className="text-xl font-bold mb-4">队伍成员</h2>
+      <h2 className="text-xl font-bold mb-4">編成メンバー</h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {battleSystem.team.map(character => (
           <CharacterCard
@@ -103,7 +103,7 @@ export default function BattleDisplay({ battleSystem }: BattleDisplayProps) {
       <div className="grid grid-cols-3 gap-4">
         {/* 队伍状态 */}
         <div className="col-span-1">
-          <h2 className="text-xl font-bold mb-4">队伍状态</h2>
+          <h2 className="text-xl font-bold mb-4">味方全体の状況</h2>
           <div className="border p-4 rounded-lg mb-4">
             <p className="text-lg">チーム全体のEXゲージ総量：</p>
             <p className="text-2xl font-bold text-blue-600">
@@ -120,7 +120,7 @@ export default function BattleDisplay({ battleSystem }: BattleDisplayProps) {
                 setAllowNegativeEx(e.target.checked);
               }}
             />
-            允许 EX 为负数
+            EX の負値を許可
           </label>
         </div>
         {/* 日志显示区域 */}

@@ -140,7 +140,7 @@ export default function CharacterSelector({ onChange }: Props) {
   return (
     <div>
       <div className="mb-4">
-        <span className="font-semibold mr-2">预设编成：</span>
+        <span className="font-semibold mr-2">プリセット編成：</span>
         <div className="flex flex-col gap-2">
           {Object.entries(presets).map(([name, presetNames]) => {
             const presetChars = presetNames
