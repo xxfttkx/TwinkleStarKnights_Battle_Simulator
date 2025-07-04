@@ -170,6 +170,10 @@ export class CharacterBase {
     return this.data.element === element;
   }
 
+  isFactionOrElement(faction: string, element: string): boolean {
+    return this.isFaction(faction) || this.isElement(element);
+  }
+
   isType(type: string): boolean {
     return this.data.type === type;
   }

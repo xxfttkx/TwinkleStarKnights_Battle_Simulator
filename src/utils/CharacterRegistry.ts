@@ -37,6 +37,7 @@ import { 一意専心_メルエル } from '@/characters/一意専心メルエル
 import { 初めての海_ルリエル } from '@/characters/初めての海_ルリエル';
 import { 碧水のミューズ_ロロット } from '@/characters/碧水のミューズ_ロロット';
 import { 雷薙の晴天使_ウズメイア } from '@/characters/雷薙の晴天使_ウズメイア';
+import { 初日の出を迎えて_フィオナ } from '@/characters/初日の出を迎えて_フィオナ';
 // …其他角色类
 
 type CharacterConstructor = new (
@@ -81,4 +82,5 @@ export const CharacterRegistry: Record<string, CharacterConstructor> = {
   初めての海ルリエル: 初めての海_ルリエル,
   碧水のミューズロロット: 碧水のミューズ_ロロット,
   雷薙の晴天使ウズメイア: 雷薙の晴天使_ウズメイア,
+  初日の出を迎えてフィオナ: 初日の出を迎えて_フィオナ,
 };
