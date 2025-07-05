@@ -39,6 +39,7 @@ import { 碧水のミューズ_ロロット } from '@/characters/碧水のミュ
 import { 雷薙の晴天使_ウズメイア } from '@/characters/雷薙の晴天使_ウズメイア';
 import { 初日の出を迎えて_フィオナ } from '@/characters/初日の出を迎えて_フィオナ';
 import { おちゃめな副会長_セーラ } from '@/characters/おちゃめな副会長_セーラ';
+import { 加護の角笛_ルリエル } from '@/characters/加護の角笛_ルリエル';
 // …其他角色类
 
 type CharacterConstructor = new (
@@ -85,4 +86,5 @@ export const CharacterRegistry: Record<string, CharacterConstructor> = {
   雷薙の晴天使ウズメイア: 雷薙の晴天使_ウズメイア,
   初日の出を迎えてフィオナ: 初日の出を迎えて_フィオナ,
   おちゃめな副会長セーラ: おちゃめな副会長_セーラ,
+  加護の角笛ルリエル: 加護の角笛_ルリエル,
 };

@@ -15,6 +15,7 @@ export default function BattleDisplay({ battleSystem }: BattleDisplayProps) {
     battleSystem.allowNegativeEx
   );
 
+  // 这里没有必要使用useCallback
   const appendLog = useCallback((msg: string) => {
     setLogs(prev => {
       const last = prev[prev.length - 1];
