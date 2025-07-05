@@ -330,6 +330,12 @@ export class BattleSystem {
     return res;
   }
 
+  // 一番右に配置されている味方
+  getRightmostCharacter(): CharacterBase | null {
+    if (this.team.length === 0) return null;
+    return this.team[this.team.length - 1];
+  }
+
   getTeamIndex(character: CharacterBase): number {
     return this.team.indexOf(character);
   }

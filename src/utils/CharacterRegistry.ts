@@ -40,6 +40,7 @@ import { 雷薙の晴天使_ウズメイア } from '@/characters/雷薙の晴天
 import { 初日の出を迎えて_フィオナ } from '@/characters/初日の出を迎えて_フィオナ';
 import { おちゃめな副会長_セーラ } from '@/characters/おちゃめな副会長_セーラ';
 import { 加護の角笛_ルリエル } from '@/characters/加護の角笛_ルリエル';
+import { ウィッチレプリカ_コハルコ_光誕 } from '@/characters/ウィッチレプリカ_コハルコ_光誕';
 // …其他角色类
 
 type CharacterConstructor = new (
@@ -87,4 +88,5 @@ export const CharacterRegistry: Record<string, CharacterConstructor> = {
   初日の出を迎えてフィオナ: 初日の出を迎えて_フィオナ,
   おちゃめな副会長セーラ: おちゃめな副会長_セーラ,
   加護の角笛ルリエル: 加護の角笛_ルリエル,
+  'ウィッチレプリカコハルコ《光誕》': ウィッチレプリカ_コハルコ_光誕,
 };
