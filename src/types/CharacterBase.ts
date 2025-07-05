@@ -153,6 +153,10 @@ export class CharacterBase {
     }
   }
 
+  setCharged(): void {
+    this.isCharged = true;
+  }
+
   finishAction(): void {
     this.isCharged = false;
   }
