@@ -258,7 +258,7 @@ export class BattleSystem {
     for (const c of this.team) {
       c.updateCT();
     }
-    emitter.emit('custom-event', 'all forward ct ' + 1);
+    emitter.emit('custom-event', 'all forward ノーツ ' + 1);
     if (this.currTurnCanAction()) {
     } else {
       this.startNewTurn();

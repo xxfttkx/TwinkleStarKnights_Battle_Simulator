@@ -111,7 +111,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
         ct_bonus: {character.getCTBonus().toFixed(2)}
       </div>
       <div className="text-sm text-gray-800 font-semibold">
-        ct: {character.ct}
+        ノーツ: {character.ct}
       </div>
       {character.ct === 0 && (
         <div className="mt-4 flex flex-wrap justify-center gap-2">
