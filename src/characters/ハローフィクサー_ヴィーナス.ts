@@ -3,7 +3,7 @@ import { CharacterBase } from '../types/CharacterBase';
 export class ハローフィクサー_ヴィーナス extends CharacterBase {
   useSkill1(team: CharacterBase[]): void {
     for (const c of team) {
-      c.ctForward(7);
+      c.notesForward(7);
     }
   }
 

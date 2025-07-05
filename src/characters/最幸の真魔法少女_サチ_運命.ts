@@ -17,7 +17,7 @@ export class 最幸の真魔法少女_サチ_運命 extends CharacterBase {
       }
     }
     if (count >= 3) {
-      this.getRightCharacter()?.ctForward(10);
+      this.getRightCharacter()?.notesForward(10);
     }
   }
 
@@ -25,7 +25,7 @@ export class 最幸の真魔法少女_サチ_運命 extends CharacterBase {
     // todo: EXスキル2+
     for (const c of team) {
       if (c.isFaction('魔族') || c.isElement('光')) {
-        c.ctForward(7);
+        c.notesForward(7);
       }
     }
   }

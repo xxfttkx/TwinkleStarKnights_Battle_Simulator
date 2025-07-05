@@ -7,7 +7,7 @@ export class 碧水のミューズ_ロロット extends CharacterBase {
     );
     for (const c of team) {
       if (c.isFaction('神族') || c.isElement('水')) {
-        c.ctForward(5);
+        c.notesForward(5);
       }
     }
     this.setBuff({
@@ -34,7 +34,7 @@ export class 碧水のミューズ_ロロット extends CharacterBase {
     }
     if (this.battleSystem.isFullOverheal()) {
       for (const c of team) {
-        c.ctForward(6);
+        c.notesForward(6);
       }
     }
   }

@@ -5,7 +5,7 @@ export class 一意専心_メルエル extends CharacterBase {
 
   useSkill2(_team: CharacterBase[]): void {
     for (const c of this.battleSystem.getLastCharacters()) {
-      c.ctForward(3);
+      c.notesForward(3);
     }
   }
 }

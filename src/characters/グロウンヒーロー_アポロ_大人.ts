@@ -9,7 +9,7 @@ export class グロウンヒーロー_アポロ_大人 extends CharacterBase {
     // todo: EXスキル2+
     for (const c of team) {
       if (c.isFaction('人間') || c.isElement('闇')) {
-        c.ctForward(7);
+        c.notesForward(7);
       }
     }
   }

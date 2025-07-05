@@ -19,7 +19,7 @@ export class はにかみチシャ猫_ヒトリ extends CharacterBase {
     });
     for (const c of team) {
       if (c.isStealth()) {
-        c.ctForward(7);
+        c.notesForward(7);
       }
     }
   }
@@ -40,7 +40,7 @@ export class はにかみチシャ猫_ヒトリ extends CharacterBase {
 
     for (const c of team) {
       if (c.isElement('炎') || c.isElement('雷')) {
-        c.ctForward(7);
+        c.notesForward(7);
       }
     }
   }

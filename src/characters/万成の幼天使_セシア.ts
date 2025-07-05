@@ -32,7 +32,7 @@ export class 万成の幼天使_セシア extends CharacterBase {
   useSkill2(team: CharacterBase[]): void {
     for (const c of team) {
       if (c.isFaction('神族')) {
-        c.ctForward(10);
+        c.notesForward(10);
       }
     }
   }

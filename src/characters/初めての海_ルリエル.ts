@@ -2,7 +2,7 @@ import { CharacterBase } from '../types/CharacterBase';
 
 export class 初めての海_ルリエル extends CharacterBase {
   useSkill1(_team: CharacterBase[]): void {
-    this.getLeftCharacter()?.ctForward(4);
+    this.getLeftCharacter()?.notesForward(4);
     this.setBuff({
       target: 'ct',
       name: '初めての海_ルリエル_スキル1',
@@ -14,7 +14,7 @@ export class 初めての海_ルリエル extends CharacterBase {
   useSkill2(team: CharacterBase[]): void {
     for (const c of team) {
       if (c.isFaction('神族') || c.isElement('雷')) {
-        c.ctForward(7);
+        c.notesForward(7);
       }
     }
     this.setBuff({

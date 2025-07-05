@@ -111,9 +111,9 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
         ct_bonus: {character.getCTBonus().toFixed(2)}
       </div>
       <div className="text-sm text-gray-800 font-semibold">
-        ノーツ: {character.ct}
+        ノーツ: {character.notes}
       </div>
-      {character.ct === 0 && (
+      {character.notes === 0 && (
         <div className="mt-4 flex flex-wrap justify-center gap-2">
           <button
             className="px-3 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"

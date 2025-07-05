@@ -10,13 +10,13 @@ export class 歩く図書館_モネ extends CharacterBase {
       val: left.isElement('炎') ? 0.402 : 0.201,
       duration: 30,
     });
-    left.ctForward(7);
+    left.notesForward(7);
   }
 
   useSkill2(team: CharacterBase[]): void {
     for (const c of team) {
       if (c.isElement('炎')) {
-        c.ctForward(7);
+        c.notesForward(7);
       }
     }
   }

@@ -59,7 +59,7 @@ export class BattleSystem {
     }
     // perfect ロケットスタート
     for (const c of this.team) {
-      c.ctForward(10);
+      c.notesForward(10);
     }
     emitter.emit('battle-start'); // 触发战斗开始事件
     this.startNewTurn();
@@ -69,7 +69,7 @@ export class BattleSystem {
     this.canAction = [];
     this.afterAction = [];
     for (let i = 0; i < this.team.length; i++) {
-      if (this.team[i].ct <= 0) {
+      if (this.team[i].notes <= 0) {
         this.canAction.push(i);
       }
     }
@@ -104,7 +104,7 @@ export class BattleSystem {
     }
     let secondPos = 999;
     for (const c of this.team)
-      if (c.ct != 0) secondPos = Math.min(secondPos, c.ct); // 找到第二个位置的最小 CT
+      if (c.notes != 0) secondPos = Math.min(secondPos, c.notes); // 找到第二个位置的最小 CT
     currChar.ctChange(secondPos);
     emitter.emit(
       'custom-event',
@@ -177,7 +177,7 @@ export class BattleSystem {
     console.log(`${name} 尝试使用 ${skill}`);
     for (const c of this.team) {
       if (c.data.name === name) {
-        if (c.ct > 0) {
+        if (c.notes > 0) {
           alert(`${c.data.name} 的行动条未满，无法使用技能！`);
           return false;
         }
@@ -305,11 +305,11 @@ export class BattleSystem {
   getSecondCharacters(): CharacterBase[] {
     let secondPos = 999;
     for (const c of this.team) {
-      if (c.ct != 0) secondPos = Math.min(secondPos, c.ct); // 找到第二个位置的最小 CT
+      if (c.notes != 0) secondPos = Math.min(secondPos, c.notes); // 找到第二个位置的最小 CT
     }
     let res = [];
     for (const c of this.team) {
-      if (c.ct == secondPos) {
+      if (c.notes == secondPos) {
         res.push(c);
       }
     }
@@ -319,11 +319,11 @@ export class BattleSystem {
   getLastCharacters(): CharacterBase[] {
     let lastPos = 0;
     for (const c of this.team) {
-      lastPos = Math.max(lastPos, c.ct);
+      lastPos = Math.max(lastPos, c.notes);
     }
     let res = [];
     for (const c of this.team) {
-      if (c.ct == lastPos) {
+      if (c.notes == lastPos) {
         res.push(c);
       }
     }

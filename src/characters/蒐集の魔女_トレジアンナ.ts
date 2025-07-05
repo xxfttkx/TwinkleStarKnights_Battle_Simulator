@@ -4,12 +4,12 @@ export class 蒐集の魔女_トレジアンナ extends CharacterBase {
   useSkill1(team: CharacterBase[]): void {
     for (const c of team) {
       if (c.isFaction('魔族')) {
-        c.ctForward(3);
+        c.notesForward(3);
       }
     }
     for (const c of team) {
       if (c.isElement('光')) {
-        c.ctForward(3);
+        c.notesForward(3);
       }
     }
   }
@@ -17,7 +17,7 @@ export class 蒐集の魔女_トレジアンナ extends CharacterBase {
   useSkill2(team: CharacterBase[]): void {
     for (const c of team) {
       if (c.isFaction('魔族') || c.isElement('光')) {
-        c.ctForward(7);
+        c.notesForward(7);
       }
     }
     if (this.battleSystem.getElementCount('光') >= 5) {

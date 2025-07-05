@@ -6,11 +6,11 @@ export class 智謀の黒き微笑み_ジュリエッテ extends CharacterBase {
       0.4 + this.battleSystem.getElementCount('闇') * 0.08
     );
     for (const c of this.battleSystem.getSecondCharacters()) {
-      c.ctForward(3);
+      c.notesForward(3);
     }
     if (this.battleSystem.getElementCount('闇') >= 3) {
       for (const c of this.battleSystem.getLastCharacters()) {
-        c.ctForward(10); // 给最后一个位置的角色充能
+        c.notesForward(10); // 给最后一个位置的角色充能
       }
     }
   }
@@ -21,7 +21,7 @@ export class 智謀の黒き微笑み_ジュリエッテ extends CharacterBase {
     );
     for (const c of team) {
       if (c.isElement('闇')) {
-        c.ctForward(7);
+        c.notesForward(7);
       }
     }
     if (this.battleSystem.isOverHeal()) {

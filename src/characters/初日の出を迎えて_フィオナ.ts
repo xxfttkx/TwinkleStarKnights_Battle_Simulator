@@ -41,7 +41,7 @@ export class 初日の出を迎えて_フィオナ extends CharacterBase {
           duration: 3,
         });
       }
-      c.ctForward(5);
+      c.notesForward(5);
     }
   }
 
@@ -49,7 +49,7 @@ export class 初日の出を迎えて_フィオナ extends CharacterBase {
     // 人間または光属性の味方のノーツを7～7前方に移動
     for (const c of team) {
       if (c.isFactionOrElement('人間', '光')) {
-        c.ctForward(7);
+        c.notesForward(7);
       }
     }
   }

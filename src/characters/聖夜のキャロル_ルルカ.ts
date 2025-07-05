@@ -4,7 +4,7 @@ export class 聖夜のキャロル_ルルカ extends CharacterBase {
   useSkill1(team: CharacterBase[]): void {
     for (const c of team) {
       if (c.data.faction === '魔族' || c.data.element === '雷') {
-        c.ctForward(7);
+        c.notesForward(7);
       }
     }
   }
@@ -19,7 +19,7 @@ export class 聖夜のキャロル_ルルカ extends CharacterBase {
           duration: 10, // Buff 的持续时间
         };
         c.setBuff(buff);
-        c.ctForward(7);
+        c.notesForward(7);
       }
     }
   }

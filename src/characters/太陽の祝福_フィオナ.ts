@@ -4,7 +4,7 @@ export class 太陽の祝福_フィオナ extends CharacterBase {
   useSkill1(team: CharacterBase[]): void {
     for (const c of team) {
       if (c.data.element === '雷') {
-        c.ctForward(7);
+        c.notesForward(7);
       }
     }
   }
@@ -12,7 +12,7 @@ export class 太陽の祝福_フィオナ extends CharacterBase {
   useSkill2(team: CharacterBase[]): void {
     for (const c of team) {
       if (c.data.element === '雷') {
-        c.ctForward(7);
+        c.notesForward(7);
       }
     }
   }

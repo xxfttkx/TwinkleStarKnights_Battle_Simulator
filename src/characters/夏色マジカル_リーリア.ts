@@ -4,7 +4,7 @@ export class 夏色マジカル_リーリア extends CharacterBase {
   useSkill1(team: CharacterBase[]): void {
     for (const c of team) {
       if (c.isType('ATK')) {
-        c.ctForward(4);
+        c.notesForward(4);
       }
     }
   }
@@ -12,7 +12,7 @@ export class 夏色マジカル_リーリア extends CharacterBase {
   useSkill2(team: CharacterBase[]): void {
     for (const c of team) {
       if (c.isFaction('魔族') || c.isElement('水')) {
-        c.ctForward(10);
+        c.notesForward(10);
       }
     }
   }

@@ -4,10 +4,10 @@ export class 一途アイドル_メルエル extends CharacterBase {
   useSkill1(team: CharacterBase[]): void {
     for (const c of team) {
       if (c.isElement('炎')) {
-        c.ctForward(7);
+        c.notesForward(7);
       }
     }
-    if(this.battleSystem.isFullOverheal()) {
+    if (this.battleSystem.isFullOverheal()) {
       this.battleSystem.addEx(100);
     }
   }
@@ -15,7 +15,7 @@ export class 一途アイドル_メルエル extends CharacterBase {
   useSkill2(team: CharacterBase[]): void {
     for (const c of team) {
       if (c.isElement('炎')) {
-        c.ctForward(7);
+        c.notesForward(7);
       }
     }
   }

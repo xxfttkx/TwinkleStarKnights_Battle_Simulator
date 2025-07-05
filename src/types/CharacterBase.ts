@@ -17,7 +17,7 @@ export interface Buff {
 
 export class CharacterBase {
   data: CharacterData;
-  ct: number; // 位置
+  notes: number; // 位置
   equips: {
     weapon?: Equip; // 武器
     armor?: Equip; // 防具
@@ -34,7 +34,7 @@ export class CharacterBase {
 
   constructor(data: CharacterData, battleSystem: BattleSystem) {
     this.data = data;
-    this.ct = data.ct;
+    this.notes = data.ct;
     this.equips = {};
     this.battleSystem = battleSystem;
     this.buffs = [];
@@ -52,10 +52,10 @@ export class CharacterBase {
   }
 
   updateCT(): void {
-    if (this.ct > 0) {
-      this.ct -= 1;
+    if (this.notes > 0) {
+      this.notes -= 1;
     } else {
-      this.ct = this.getCT();
+      this.notes = this.getCT();
     }
     // todo: 我也不知道先算buff还是先算ct
     // 自身の行動CT50％短縮（1CT） 有这种东西存在所以应该是先算ct吧
@@ -111,14 +111,14 @@ export class CharacterBase {
     return Math.max(1, Math.ceil(this.data.ct * (1 - this.getCTBonus())));
   }
 
-  ctForward(num: number): void {
-    if (this.ct > 1) {
-      this.ct = Math.max(1, this.ct - num);
+  notesForward(num: number): void {
+    if (this.notes > 1) {
+      this.notes = Math.max(1, this.notes - num);
     }
   }
 
   ctChange(num: number): void {
-    this.ct = num;
+    this.notes = num;
   }
 
   getEx1Cost(): number {

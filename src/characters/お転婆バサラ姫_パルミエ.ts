@@ -8,10 +8,10 @@ export class お転婆バサラ姫_パルミエ extends CharacterBase {
       val: 0.1,
       duration: 1,
     });
-    this.getRightCharacter()?.ctForward(10);
+    this.getRightCharacter()?.notesForward(10);
   }
 
   useSkill2(_team: CharacterBase[]): void {
-    this.getRightCharacter()?.ctForward(3);
+    this.getRightCharacter()?.notesForward(3);
   }
 }

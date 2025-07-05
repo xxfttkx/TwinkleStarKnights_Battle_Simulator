@@ -15,14 +15,14 @@ export class 自称妹魔王_メイプル extends CharacterBase {
     }
     if (right) {
       const isYami = right.isElement('闇');
-      right.ctForward(isYami ? 8 : 5);
+      right.notesForward(isYami ? 8 : 5);
     }
   }
 
   useSkill2(team: CharacterBase[]): void {
     for (const c of team) {
       if (c.isElement('闇')) {
-        c.ctForward(5);
+        c.notesForward(5);
       }
     }
     if (this.battleSystem.getElementCount('闇') >= 5) {

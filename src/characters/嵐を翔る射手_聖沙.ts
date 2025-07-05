@@ -15,7 +15,7 @@ export class 嵐を翔る射手_聖沙 extends CharacterBase {
   useSkill2(team: CharacterBase[]): void {
     if (this.isCharged) {
       for (const c of team) {
-        c.ctForward(7);
+        c.notesForward(7);
       }
     }
   }

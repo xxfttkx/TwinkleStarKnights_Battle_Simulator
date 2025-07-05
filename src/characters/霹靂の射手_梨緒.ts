@@ -4,18 +4,18 @@ export class 霹靂の射手_梨緒 extends CharacterBase {
   useSkill1(team: CharacterBase[]): void {
     let secondPos = 999;
     for (const c of team) {
-      if (c.ct != 0) secondPos = Math.min(secondPos, c.ct); // 找到第二个位置的最小 CT
+      if (c.notes != 0) secondPos = Math.min(secondPos, c.notes); // 找到第二个位置的最小 CT
     }
     for (const c of team) {
-      if (c.ct == secondPos) {
-        c.ctForward(3); // 给队友充能
+      if (c.notes == secondPos) {
+        c.notesForward(3); // 给队友充能
       }
     }
     if (this.isThreeNingen(team)) {
       let isReady = false;
       for (const c of team) {
         if (isReady) {
-          c.ctForward(10);
+          c.notesForward(10);
           break;
         }
         if (c.data.name == '霹靂の射手_梨緒') {
@@ -27,7 +27,7 @@ export class 霹靂の射手_梨緒 extends CharacterBase {
 
   useSkill2(team: CharacterBase[]): void {
     for (const c of team) {
-      c.ctForward(7);
+      c.notesForward(7);
     }
     if (this.isThreeNingen(team)) {
       for (const c of team) {

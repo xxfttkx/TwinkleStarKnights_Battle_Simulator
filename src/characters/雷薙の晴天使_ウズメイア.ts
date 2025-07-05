@@ -11,7 +11,7 @@ export class 雷薙の晴天使_ウズメイア extends CharacterBase {
           val: 0.2,
           duration: 5,
         });
-        c.ctForward(4);
+        c.notesForward(4);
       }
     }
   }

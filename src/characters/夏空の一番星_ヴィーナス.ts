@@ -11,14 +11,14 @@ export class 夏空の一番星_ヴィーナス extends CharacterBase {
     });
     emitter.emit('ex-up-changed', this.data.name);
     for (const c of team) {
-      c.ctForward(7);
+      c.notesForward(7);
     }
   }
 
   useSkill2(team: CharacterBase[]): void {
     for (const c of team) {
       if (c.data.faction === '人間' || c.data.element === '水') {
-        c.ctForward(7);
+        c.notesForward(7);
       }
     }
   }
