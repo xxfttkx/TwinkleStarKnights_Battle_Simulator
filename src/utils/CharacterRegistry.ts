@@ -42,6 +42,7 @@ import { おちゃめな副会長_セーラ } from '@/characters/おちゃめな
 import { 加護の角笛_ルリエル } from '@/characters/加護の角笛_ルリエル';
 import { ウィッチレプリカ_コハルコ_光誕 } from '@/characters/ウィッチレプリカ_コハルコ_光誕';
 import { 善哉童子_紅明 } from '@/characters/善哉童子_紅明';
+import { 蒼穹の仮想歌姫_ルルカ } from '@/characters/蒼穹の仮想歌姫_ルルカ';
 // …其他角色类
 
 type CharacterConstructor = new (
@@ -91,4 +92,5 @@ export const CharacterRegistry: Record<string, CharacterConstructor> = {
   加護の角笛ルリエル: 加護の角笛_ルリエル,
   'ウィッチレプリカコハルコ《光誕》': ウィッチレプリカ_コハルコ_光誕,
   善哉童子紅明: 善哉童子_紅明,
+  蒼穹の仮想歌姫ルルカ: 蒼穹の仮想歌姫_ルルカ,
 };

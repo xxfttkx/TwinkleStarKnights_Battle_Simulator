@@ -305,11 +305,31 @@ export class BattleSystem {
   getSecondCharacters(): CharacterBase[] {
     let secondPos = 999;
     for (const c of this.team) {
-      if (c.notes != 0) secondPos = Math.min(secondPos, c.notes); // 找到第二个位置的最小 CT
+      if (c.notes != 0) secondPos = Math.min(secondPos, c.notes); // 找到第二个位置的最小 notes
     }
     let res = [];
     for (const c of this.team) {
       if (c.notes == secondPos) {
+        res.push(c);
+      }
+    }
+    return res;
+  }
+
+  getThirdCharacters(): CharacterBase[] {
+    let secondPos = 999;
+    for (const c of this.team) {
+      if (c.notes != 0) secondPos = Math.min(secondPos, c.notes); // 找到第二个位置的最小 notes
+    }
+    let thirdPos = 999;
+    for (const c of this.team) {
+      if (c.notes != 0 && c.notes > secondPos) {
+        thirdPos = Math.min(thirdPos, c.notes); // 找到第三个位置的最小 notes
+      }
+    }
+    let res = [];
+    for (const c of this.team) {
+      if (c.notes == thirdPos) {
         res.push(c);
       }
     }
