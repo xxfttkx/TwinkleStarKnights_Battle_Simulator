@@ -105,7 +105,7 @@ export class BattleSystem {
     let secondPos = 999;
     for (const c of this.team)
       if (c.notes != 0) secondPos = Math.min(secondPos, c.notes); // 找到第二个位置的最小 CT
-    currChar.ctChange(secondPos);
+    currChar.notesChange(secondPos);
     emitter.emit(
       'custom-event',
       `${currChar.data.name} がユニゾンを発動した！`
@@ -147,7 +147,7 @@ export class BattleSystem {
     let addEX = 100;
     for (const index of this.canAction) {
       let c = this.team[index];
-      c.ctChange(chargedCT);
+      c.notesChange(chargedCT);
       c.isCharged = true;
       addEX += c.getEx_up();
     }

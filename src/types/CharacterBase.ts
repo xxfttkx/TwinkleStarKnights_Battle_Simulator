@@ -117,7 +117,7 @@ export class CharacterBase {
     }
   }
 
-  ctChange(num: number): void {
+  notesChange(num: number): void {
     this.notes = num;
   }
 

@@ -6,7 +6,7 @@ export class 甘愛フレグランス_シャルレーヌ extends CharacterBase {
     if (secondCharacters.length <= 0) return;
     const secondPos = secondCharacters[0].notes;
     for (const c of this.battleSystem.getLastCharacters()) {
-      c.ctChange(secondPos);
+      c.notesChange(secondPos);
     }
     //todo: 魅了状態の敵が1体以上の場合、敵単体のEXゲージを100吸収し、その内の50％味方のEXゲージを回復
   }
