@@ -20,15 +20,15 @@ export default function BattleDisplay({ battleSystem }: BattleDisplayProps) {
       const last = prev[prev.length - 1];
 
       // 如果新日志是 "all forward ノーツ 1"
-      if (msg === 'all forward ノーツ 1') {
-        const match = last?.match(/^all forward ノーツ 1 × (\d+)$/);
+      if (msg === '全員前進ノーツ 1') {
+        const match = last?.match(/^全員前進ノーツ 1 × (\d+)$/);
         if (match) {
           // 如果已经是合并记录，更新次数
           const count = parseInt(match[1], 10) + 1;
-          return [...prev.slice(0, -1), `all forward ノーツ 1 × ${count}`];
-        } else if (last === 'all forward ノーツ 1') {
+          return [...prev.slice(0, -1), `全員前進ノーツ 1 × ${count}`];
+        } else if (last === '全員前進ノーツ 1') {
           // 如果上一个是第一次遇到，变成 ×2
-          return [...prev.slice(0, -1), 'all forward ノーツ 1 × 2'];
+          return [...prev.slice(0, -1), '全員前進ノーツ 1 × 2'];
         } else {
           // 普通追加
           return [...prev, msg];
