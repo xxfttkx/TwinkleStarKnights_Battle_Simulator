@@ -58,6 +58,7 @@ import { 若きプリンシパル_シノ } from '@/characters/若きプリンシ
 import { 究愛の日傘探偵_ジュエリー_究明 } from '@/characters/究愛の日傘探偵_ジュエリー_究明';
 import { 星選の大怪盗_ミネコ } from '@/characters/星選の大怪盗_ミネコ';
 import { アイスクイーン_サーシャ } from '@/characters/アイスクイーン_サーシャ';
+import { ソルヴアーチャー_アナ } from '@/characters/ソルヴアーチャー_アナ';
 // …其他角色类
 
 type CharacterConstructor = new (
@@ -123,4 +124,5 @@ export const CharacterRegistry: Record<string, CharacterConstructor> = {
   '究愛の日傘探偵ジュエリー《究明》': 究愛の日傘探偵_ジュエリー_究明,
   星選の大怪盗ミネコ: 星選の大怪盗_ミネコ,
   アイスクイーンサーシャ: アイスクイーン_サーシャ,
+  ソルヴアーチャーアナ: ソルヴアーチャー_アナ,
 };
