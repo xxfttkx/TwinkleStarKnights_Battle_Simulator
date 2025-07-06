@@ -50,6 +50,7 @@ import { 巫女狐の嫁入り_ヨミ } from '@/characters/巫女狐の嫁入り
 import { 渚の星徒会長_フィオナ } from '@/characters/渚の星徒会長_フィオナ';
 import { 皇妃に仕える剣_リーエン } from '@/characters/皇妃に仕える剣_リーエン';
 import { 鉄扇公主_紅明_羅刹 } from '@/characters/鉄扇公主_紅明_羅刹';
+import { 斉天大聖_クーシェン } from '@/characters/斉天大聖_クーシェン';
 // …其他角色类
 
 type CharacterConstructor = new (
@@ -107,4 +108,5 @@ export const CharacterRegistry: Record<string, CharacterConstructor> = {
   渚の星徒会長フィオナ: 渚の星徒会長_フィオナ,
   皇妃に仕える剣リーエン: 皇妃に仕える剣_リーエン,
   '鉄扇公主紅明《羅刹》': 鉄扇公主_紅明_羅刹,
+  斉天大聖クーシェン: 斉天大聖_クーシェン,
 };
