@@ -46,6 +46,7 @@ import { 蒼穹の仮想歌姫_ルルカ } from '@/characters/蒼穹の仮想歌
 import { 虹色の魔弾使い_リーリア } from '@/characters/虹色の魔弾使い_リーリア';
 import { 黄昏の姫君_クラウディア_黄昏 } from '@/characters/黄昏の姫君_クラウディア_黄昏';
 import { 絶対普遍の守り手_マトイ_纏雷 } from '@/characters/絶対普遍の守り手_マトイ_纏雷';
+import { 巫女狐の嫁入り_ヨミ } from '@/characters/巫女狐の嫁入り_ヨミ';
 // …其他角色类
 
 type CharacterConstructor = new (
@@ -99,4 +100,5 @@ export const CharacterRegistry: Record<string, CharacterConstructor> = {
   虹色の魔弾使いリーリア: 虹色の魔弾使い_リーリア,
   '黄昏の姫君クラウディア《黄昏》': 黄昏の姫君_クラウディア_黄昏,
   '絶対普遍の守り手マトイ《纏雷》': 絶対普遍の守り手_マトイ_纏雷,
+  巫女狐の嫁入りヨミ: 巫女狐の嫁入り_ヨミ,
 };
