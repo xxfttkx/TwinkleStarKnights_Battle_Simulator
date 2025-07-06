@@ -55,6 +55,7 @@ import { 最後のコラプサー_レイラ } from '@/characters/最後のコラ
 import { 水星の花嫁_トワ先生 } from '@/characters/水星の花嫁_トワ先生';
 import { 魔女を狩る魔女_マリオン } from '@/characters/魔女を狩る魔女_マリオン';
 import { 若きプリンシパル_シノ } from '@/characters/若きプリンシパル_シノ';
+import { 究愛の日傘探偵_ジュエリー_究明 } from '@/characters/究愛の日傘探偵_ジュエリー_究明';
 // …其他角色类
 
 type CharacterConstructor = new (
@@ -117,4 +118,5 @@ export const CharacterRegistry: Record<string, CharacterConstructor> = {
   水星の花嫁トワ先生: 水星の花嫁_トワ先生,
   魔女を狩る魔女マリオン: 魔女を狩る魔女_マリオン,
   若きプリンシパルシノ: 若きプリンシパル_シノ,
+  '究愛の日傘探偵ジュエリー《究明》': 究愛の日傘探偵_ジュエリー_究明,
 };

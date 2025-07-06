@@ -309,10 +309,7 @@ export class BattleSystem {
   }
 
   getSecondCharacters(): CharacterBase[] {
-    let secondPos = 999;
-    for (const c of this.team) {
-      if (c.notes != 0) secondPos = Math.min(secondPos, c.notes); // 找到第二个位置的最小 notes
-    }
+    let secondPos = this.getSecondPos();
     let res = [];
     for (const c of this.team) {
       if (c.notes == secondPos) {
@@ -320,6 +317,14 @@ export class BattleSystem {
       }
     }
     return res;
+  }
+
+  getSecondPos(): number {
+    let secondPos = 999;
+    for (const c of this.team) {
+      if (c.notes != 0) secondPos = Math.min(secondPos, c.notes); // 找到第二个位置的最小 notes
+    }
+    return secondPos;
   }
 
   getThirdCharacters(): CharacterBase[] {
