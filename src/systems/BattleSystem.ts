@@ -18,6 +18,7 @@ export class BattleSystem {
   allowNegativeEx = true;
   editedExMap: Record<string, EditedExData> = {};
   hp: number = 1.0;
+  rush: number = 0;
 
   constructor() {
     emitter.on('ex-edit', (data: [string, number]) => {
@@ -53,6 +54,7 @@ export class BattleSystem {
     this.teamEx = 0;
     this.teamExMax = 400; // 最大 EX 量为 400
     this.hp = 1.0;
+    this.rush = 0; // 初始化时设置 rush 为 0
     for (const c of this.team) {
       this.addEx(c.getEx()); // 初始化时增加每个角色的 EX 量
       emitter.emit('ex-up-changed', c.data.name); // 通知 EX_UP 变化
@@ -358,5 +360,15 @@ export class BattleSystem {
 
   getTeamIndex(character: CharacterBase): number {
     return this.team.indexOf(character);
+  }
+
+  // ラッシュ
+  addRush(num: number): void {
+    this.rush += num;
+    // emitter.emit('rush-change', this.rush);
+  }
+
+  getRush(): number {
+    return this.rush;
   }
 }
