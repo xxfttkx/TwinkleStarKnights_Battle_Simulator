@@ -57,6 +57,7 @@ import { 魔女を狩る魔女_マリオン } from '@/characters/魔女を狩る
 import { 若きプリンシパル_シノ } from '@/characters/若きプリンシパル_シノ';
 import { 究愛の日傘探偵_ジュエリー_究明 } from '@/characters/究愛の日傘探偵_ジュエリー_究明';
 import { 星選の大怪盗_ミネコ } from '@/characters/星選の大怪盗_ミネコ';
+import { アイスクイーン_サーシャ } from '@/characters/アイスクイーン_サーシャ';
 // …其他角色类
 
 type CharacterConstructor = new (
@@ -121,4 +122,5 @@ export const CharacterRegistry: Record<string, CharacterConstructor> = {
   若きプリンシパルシノ: 若きプリンシパル_シノ,
   '究愛の日傘探偵ジュエリー《究明》': 究愛の日傘探偵_ジュエリー_究明,
   星選の大怪盗ミネコ: 星選の大怪盗_ミネコ,
+  アイスクイーンサーシャ: アイスクイーン_サーシャ,
 };
