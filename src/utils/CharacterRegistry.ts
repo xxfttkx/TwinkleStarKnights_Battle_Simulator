@@ -53,6 +53,7 @@ import { 鉄扇公主_紅明_羅刹 } from '@/characters/鉄扇公主_紅明_羅
 import { 斉天大聖_クーシェン } from '@/characters/斉天大聖_クーシェン';
 import { 最後のコラプサー_レイラ } from '@/characters/最後のコラプサー_レイラ';
 import { 水星の花嫁_トワ先生 } from '@/characters/水星の花嫁_トワ先生';
+import { 魔女を狩る魔女_マリオン } from '@/characters/魔女を狩る魔女_マリオン';
 // …其他角色类
 
 type CharacterConstructor = new (
@@ -113,4 +114,5 @@ export const CharacterRegistry: Record<string, CharacterConstructor> = {
   斉天大聖クーシェン: 斉天大聖_クーシェン,
   最後のコラプサーレイラ: 最後のコラプサー_レイラ,
   水星の花嫁トワ先生: 水星の花嫁_トワ先生,
+  魔女を狩る魔女マリオン: 魔女を狩る魔女_マリオン,
 };

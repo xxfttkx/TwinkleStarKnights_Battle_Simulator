@@ -216,6 +216,15 @@ export class CharacterBase {
     }
   }
 
+  setCTBuff(name: string, val: number, duration: number): void {
+    this.setBuff({
+      target: 'ct',
+      name,
+      val: val * 0.01,
+      duration,
+    });
+  }
+
   setBuff(buff: Buff): void {
     this.buffs.push(buff);
   }
