@@ -35,6 +35,7 @@ export class CharacterBase {
     subElement: string; // サブ属性名
     duration: number; // 持続時間
   };
+  useSecondFrontAllyNoteReturn = false;
 
   constructor(data: CharacterData, battleSystem: BattleSystem) {
     this.data = data;
@@ -55,7 +56,7 @@ export class CharacterBase {
     return true;
   }
 
-  updateCT(): void {
+  updateNotes(): void {
     if (this.notes > 0) {
       this.notes -= 1;
     } else {
@@ -64,10 +65,8 @@ export class CharacterBase {
     // todo: 我也不知道先算buff还是先算ct
     // 自身の行動CT50％短縮（1CT） 有这种东西存在所以应该是先算ct吧
     for (const b of this.buffs) {
-      b.duration -= 1; // 每次设置 Buff 时减少持续时间
-      // console.log(`Buff ${b.name} 的剩余持续时间: ${b.duration}`);
+      b.duration -= 1;
       if (b.duration <= 0) {
-        // 如果 Buff 的持续时间小于等于 0，则移除该 Buff
         this.buffs = this.buffs.filter(existingBuff => existingBuff !== b);
       }
     }
@@ -75,6 +74,17 @@ export class CharacterBase {
       this.subElementBuff.duration -= 1; // 每次设置 Buff 时减少持续时间
       if (this.subElementBuff.duration <= 0) {
         this.subElementBuff = undefined; // 移除子属性 Buff
+      }
+    }
+  }
+
+  // 行動終了後のノーツ戻り位置を前から2番目の味方と同じ位置にする（対象がいない場合、行動CT値を参照した位置に戻る）
+  applyNotesOverride(): void {
+    if (this.useSecondFrontAllyNoteReturn) {
+      this.useSecondFrontAllyNoteReturn = false;
+      const secPos = this.battleSystem.getSecondPos();
+      if (secPos !== 999) {
+        this.notesChange(secPos);
       }
     }
   }
@@ -141,6 +151,11 @@ export class CharacterBase {
 
   setExBuff(costReduction: number, remainingUses: number): void {
     // 次ターン以降EXスキル1回発動まで
+    // 使用 万成の幼天使_セシア 和 智謀の黒き微笑み_ジュリエッテ 测试发现不能叠加，且似乎是取最高
+    // 然而有个-50%ex的角色，我没有测试过
+    if (this.exBuff && this.exBuff.costReduction >= costReduction) {
+      return; // 如果已有的exBuff更强，则不设置新的
+    }
     this.exBuff = {
       costReduction,
       remainingUses,

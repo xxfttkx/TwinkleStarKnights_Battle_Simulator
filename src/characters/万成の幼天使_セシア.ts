@@ -3,8 +3,8 @@ import { CharacterBase } from '../types/CharacterBase';
 export class 万成の幼天使_セシア extends CharacterBase {
   skill1CD: number = 0;
 
-  updateCT(): void {
-    super.updateCT();
+  updateNotes(): void {
+    super.updateNotes();
     if (this.skill1CD > 0) {
       this.skill1CD--;
     }

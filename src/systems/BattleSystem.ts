@@ -257,9 +257,17 @@ export class BattleSystem {
 
   startNewTurn(): void {
     this.startAction = -1; // 重置最先行动的角色索引
+
     for (const c of this.team) {
-      c.updateCT();
+      // 自身の行動終了後のノーツ戻り位置を前から2番目の味方と同じ位置にする（対象がいない場合、行動CT値を参照した位置に戻る）
+      // 这设定也太有趣了，能一直unison
+      c.applyNotesOverride();
     }
+
+    for (const c of this.team) {
+      c.updateNotes();
+    }
+
     emitter.emit('custom-event', '全員前進ノーツ ' + 1);
     if (this.currTurnCanAction()) {
     } else {
