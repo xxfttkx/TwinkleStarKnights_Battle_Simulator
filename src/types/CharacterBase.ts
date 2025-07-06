@@ -257,4 +257,24 @@ export class CharacterBase {
   afterSkill(): void {
     this.consumeExBuffIfAny();
   }
+
+  getLeftLanes(num: number): CharacterBase[] {
+    const index = this.battleSystem.getTeamIndex(this);
+    if (index < 0) {
+      return []; // 如果当前角色不在队伍中，返回空数组
+    }
+    // 尝试获取左侧队友，最多获取到队伍开头
+    const startIndex = Math.max(index - num, 0);
+    return this.battleSystem.team.slice(startIndex, index);
+  }
+
+  getRightLanes(num: number): CharacterBase[] {
+    const index = this.battleSystem.getTeamIndex(this);
+    if (index < 0) {
+      return []; // 如果当前角色不在队伍中，返回空数组
+    }
+    // 尝试获取右侧队友，最多获取到队伍末尾
+    const endIndex = Math.min(index + num + 1, this.battleSystem.team.length);
+    return this.battleSystem.team.slice(index + 1, endIndex);
+  }
 }
