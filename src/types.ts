@@ -12,4 +12,5 @@ export interface CharacterData {
   element: string;
   star: string;
   releaseDate: string;
+  affiliation: string;
 }

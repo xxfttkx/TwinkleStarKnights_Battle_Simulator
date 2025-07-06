@@ -304,6 +304,10 @@ export class BattleSystem {
       .length;
   }
 
+  getAffiliationCount(affiliation: string): number {
+    return this.team.filter(c => c.isAffiliation(affiliation)).length;
+  }
+
   getSecondCharacters(): CharacterBase[] {
     let secondPos = 999;
     for (const c of this.team) {

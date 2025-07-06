@@ -14,6 +14,7 @@ const fieldMap: Record<string, keyof CharacterData> = {
   属性: 'element',
   '★': 'star',
   実装日: 'releaseDate',
+  所属: 'affiliation',
 };
 
 function convertCharacter(item: Record<string, any>): CharacterData {

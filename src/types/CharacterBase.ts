@@ -31,6 +31,10 @@ export class CharacterBase {
     costReduction: number;
     remainingUses: number;
   };
+  subElementBuff?: {
+    subElement: string; // サブ属性名
+    duration: number; // 持続時間
+  };
 
   constructor(data: CharacterData, battleSystem: BattleSystem) {
     this.data = data;
@@ -65,6 +69,12 @@ export class CharacterBase {
       if (b.duration <= 0) {
         // 如果 Buff 的持续时间小于等于 0，则移除该 Buff
         this.buffs = this.buffs.filter(existingBuff => existingBuff !== b);
+      }
+    }
+    if (this.subElementBuff) {
+      this.subElementBuff.duration -= 1; // 每次设置 Buff 时减少持续时间
+      if (this.subElementBuff.duration <= 0) {
+        this.subElementBuff = undefined; // 移除子属性 Buff
       }
     }
   }
@@ -171,7 +181,19 @@ export class CharacterBase {
   }
 
   isElement(element: string): boolean {
-    return this.data.element === element;
+    return this.data.element === element || this.hasSubElement(element);
+  }
+
+  setSubElementBuff(subElement: string, duration: number): void {
+    this.subElementBuff = {
+      subElement,
+      duration,
+    };
+  }
+
+  // サブ属性
+  hasSubElement(element: string): boolean {
+    return this.subElementBuff?.subElement === element;
   }
 
   isFactionOrElement(faction: string, element: string): boolean {
@@ -180,6 +202,18 @@ export class CharacterBase {
 
   isType(type: string): boolean {
     return this.data.type === type;
+  }
+
+  isAffiliation(affiliation: string): boolean {
+    switch (affiliation) {
+      case 'コラプサー':
+        return (
+          this.data.affiliation === affiliation ||
+          this.data.affiliation === 'コラプサ'
+        );
+      default:
+        return this.data.affiliation === affiliation;
+    }
   }
 
   setBuff(buff: Buff): void {
