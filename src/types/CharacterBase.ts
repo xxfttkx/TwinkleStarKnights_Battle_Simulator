@@ -15,6 +15,11 @@ export interface Buff {
   duration: number; // 持续时间（单位：CT）
 }
 
+export type CharacterConstructor = new (
+  char: CharacterData,
+  battle: any
+) => CharacterBase;
+
 export class CharacterBase {
   data: CharacterData;
   notes: number; // 位置

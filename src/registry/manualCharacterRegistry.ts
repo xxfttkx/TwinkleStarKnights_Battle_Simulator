@@ -1,6 +1,5 @@
-// characterRegistry.ts
-import { CharacterBase } from '@/types/CharacterBase';
-import type { CharacterData } from '@/types';
+import { type CharacterConstructor } from '@/types/CharacterBase';
+
 import { 夏空の一番星_ヴィーナス } from '@/characters/夏空の一番星_ヴィーナス';
 import { 招福の明星_ヴィーナス } from '@/characters/招福の明星_ヴィーナス';
 import { 正義のハッカー_コハルコ } from '@/characters/正義のハッカー_コハルコ';
@@ -65,12 +64,7 @@ import { 救世の錬金術師_アニマ } from '@/characters/救世の錬金術
 import { トラップボマー_ネーゼマイン } from '@/characters/トラップボマー_ネーゼマイン';
 // …其他角色类
 
-type CharacterConstructor = new (
-  char: CharacterData,
-  battle: any
-) => CharacterBase;
-
-export const CharacterRegistry: Record<string, CharacterConstructor> = {
+export const ManualCharacterRegistry: Record<string, CharacterConstructor> = {
   夏空の一番星ヴィーナス: 夏空の一番星_ヴィーナス,
   招福の明星ヴィーナス: 招福の明星_ヴィーナス,
   正義のハッカーコハルコ: 正義のハッカー_コハルコ,

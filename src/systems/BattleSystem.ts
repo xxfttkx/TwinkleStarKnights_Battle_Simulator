@@ -1,7 +1,7 @@
 import { CharacterBase } from '../types/CharacterBase';
 import emitter from '../eventBus';
 import { type CharacterData } from '@/types';
-import { CharacterRegistry } from '@/utils/CharacterRegistry';
+import { AllCharacterRegistry as CharacterRegistry } from '@/registry/AllCharacterRegistry';
 
 interface EditedExData {
   ex: number;
@@ -186,7 +186,7 @@ export class BattleSystem {
         if (this.afterAction.includes(this.team.indexOf(c))) {
           return false; // 如果该角色已经行动过，则不能再次使用技能
         }
-        console.log('是否测试模式:', this.allowNegativeEx);
+        // console.log('是否测试模式:', this.allowNegativeEx);
         let exCost = 0;
         if (skill === 'ex1') {
           if (this.teamEx >= c.getEx1Cost() || this.allowNegativeEx) {
