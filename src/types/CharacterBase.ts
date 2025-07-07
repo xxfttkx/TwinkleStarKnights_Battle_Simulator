@@ -41,6 +41,7 @@ export class CharacterBase {
     duration: number; // 持続時間
   };
   useSecondFrontAllyNoteReturn = false;
+  secondFaction: string = ''; // セカンド種族
 
   constructor(data: CharacterData, battleSystem: BattleSystem) {
     this.data = data;
@@ -197,7 +198,7 @@ export class CharacterBase {
   }
 
   isFaction(faction: string): boolean {
-    return this.data.faction === faction;
+    return this.data.faction === faction || this.secondFaction === faction;
   }
 
   isElement(element: string): boolean {
