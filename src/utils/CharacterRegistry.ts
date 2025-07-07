@@ -62,6 +62,7 @@ import { ソルヴアーチャー_アナ } from '@/characters/ソルヴアーチ
 import { 爆裂破邪の巫女_ヨミ } from '@/characters/爆裂破邪の巫女_ヨミ';
 import { クール_クリーン_ナミエル } from '@/characters/クール_クリーン_ナミエル';
 import { 救世の錬金術師_アニマ } from '@/characters/救世の錬金術師_アニマ';
+import { トラップボマー_ネーゼマイン } from '@/characters/トラップボマー_ネーゼマイン';
 // …其他角色类
 
 type CharacterConstructor = new (
@@ -131,4 +132,5 @@ export const CharacterRegistry: Record<string, CharacterConstructor> = {
   爆裂破邪の巫女ヨミ: 爆裂破邪の巫女_ヨミ,
   'クール＆クリーンナミエル': クール_クリーン_ナミエル,
   救世の錬金術師アニマ: 救世の錬金術師_アニマ,
+  トラップボマーネーゼマイン: トラップボマー_ネーゼマイン,
 };
