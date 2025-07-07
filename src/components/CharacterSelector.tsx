@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { characters as allCharacters } from '@/data/Characters';
 import { type CharacterData } from '@/types';
-import { AllCharacterRegistry as CharacterRegistry } from '@/registry/AllCharacterRegistry';
+import { AllCharacterRegistry as CharacterRegistry } from '@/registry/allCharacterRegistry';
 
 interface Props {
   onChange: (selected: CharacterData[]) => void;

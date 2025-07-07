@@ -1,7 +1,7 @@
 import { CharacterBase } from '../types/CharacterBase';
 import emitter from '../eventBus';
 import { type CharacterData } from '@/types';
-import { AllCharacterRegistry as CharacterRegistry } from '@/registry/AllCharacterRegistry';
+import { AllCharacterRegistry as CharacterRegistry } from '@/registry/allCharacterRegistry';
 
 interface EditedExData {
   ex: number;
