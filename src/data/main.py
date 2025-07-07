@@ -1,3 +1,4 @@
+import os
 from urllib.parse import urljoin
 import requests
 from bs4 import BeautifulSoup
@@ -53,7 +54,8 @@ url = "https://twinklestarknights.wikiru.jp/?キャラクター一覧"
 json_data = table_to_json(url)
 
 
-
-with open("characters_all.json", "w", encoding="utf-8") as f:
+script_dir = os.path.dirname(os.path.abspath(__file__))
+output_path = os.path.join(script_dir, "characters_all.json")
+with open(output_path, "w", encoding="utf-8") as f:
     json.dump(json_data, f, ensure_ascii=False, indent=2)
 
