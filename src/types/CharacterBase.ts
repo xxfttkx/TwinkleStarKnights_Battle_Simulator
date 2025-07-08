@@ -213,6 +213,14 @@ export class CharacterBase {
   }
 
   // サブ属性
+  hasAnySubElement(): boolean {
+    return (
+      this.subElementBuff?.subElement !== undefined &&
+      this.subElementBuff?.subElement !== ''
+    );
+  }
+
+  // サブ属性
   hasSubElement(element: string): boolean {
     return this.subElementBuff?.subElement === element;
   }
@@ -306,5 +314,11 @@ export class CharacterBase {
     // 尝试获取右侧队友，最多获取到队伍末尾
     const endIndex = Math.min(index + num + 1, this.battleSystem.team.length);
     return this.battleSystem.team.slice(index + 1, endIndex);
+  }
+
+  getLeftAndRightLanes(numLeft: number, numRight: number): CharacterBase[] {
+    const leftLanes = this.getLeftLanes(numLeft);
+    const rightLanes = this.getRightLanes(numRight);
+    return [...leftLanes, ...rightLanes];
   }
 }
