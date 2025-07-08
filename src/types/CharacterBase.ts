@@ -15,6 +15,11 @@ export interface Buff {
   duration: number; // 持续时间（单位：CT）
 }
 
+export interface Status {
+  name: string; // Status 名称
+  duration: number; // 持续时间（单位：CT）
+}
+
 export type CharacterConstructor = new (
   char: CharacterData,
   battle: any
@@ -32,6 +37,7 @@ export class CharacterBase {
   isDead: boolean = false; // 是否死亡
   battleSystem: BattleSystem;
   buffs: Buff[];
+  statuses: Map<string, Status>;
   exBuff?: {
     costReduction: number;
     remainingUses: number;
@@ -49,6 +55,7 @@ export class CharacterBase {
     this.equips = {};
     this.battleSystem = battleSystem;
     this.buffs = [];
+    this.statuses = new Map<string, Status>();
   }
 
   // 通用方法
@@ -80,6 +87,12 @@ export class CharacterBase {
       this.subElementBuff.duration -= 1; // 每次设置 Buff 时减少持续时间
       if (this.subElementBuff.duration <= 0) {
         this.subElementBuff = undefined; // 移除子属性 Buff
+      }
+    }
+    for (const [name, status] of this.statuses) {
+      status.duration -= 1;
+      if (status.duration <= 0) {
+        this.statuses.delete(name); // 移除状态
       }
     }
   }
@@ -338,5 +351,14 @@ export class CharacterBase {
 
   setCriticalBuff(_name: string, _val: number, _duration: number): void {
     // todo
+  }
+
+  setStatus(name: string, duration: number): void {
+    // todo: 我不知道逻辑啊，要不要判断duration？还是直接上書き？
+    this.statuses.set(name, { name, duration });
+  }
+
+  hasStatus(name: string): boolean {
+    return this.statuses.has(name);
   }
 }
