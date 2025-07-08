@@ -400,9 +400,9 @@ export class BattleSystem {
   }
 
   getCharacterByIndex(index: number): CharacterBase | null {
-    if (index < 0 || index >= this.battleSystem.team.length) {
+    if (index < 0 || index >= this.team.length) {
       return null; // 如果索引越界，返回 null
     }
-    return this.battleSystem.team[index];
+    return this.team[index];
   }
 }
