@@ -392,4 +392,10 @@ export class BattleSystem {
   getUnisonCount(): number {
     return this.canAction.length;
   }
+
+  // 缓回
+  // e.g. 味方のHPを1CT経過ごとに味方の数x2％回復（20CT）
+  setRecoverHPEveryCT(_val: number, _duration: number): void {
+    // todo: 感觉除非极限情况不然没必要算了
+  }
 }
