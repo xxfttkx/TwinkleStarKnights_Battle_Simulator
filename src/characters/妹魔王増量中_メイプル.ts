@@ -2,7 +2,6 @@ import { CharacterBase } from '../types/CharacterBase';
 
 export class 妹魔王増量中_メイプル extends CharacterBase {
   static id = '妹魔王増量中メイプル';
-  secondFaction = '人間';
 
   useSkill1(_team: CharacterBase[]): void {
     // ・敵単体に176％のダメージ
