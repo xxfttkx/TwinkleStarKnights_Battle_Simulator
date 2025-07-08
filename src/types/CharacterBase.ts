@@ -254,6 +254,16 @@ export class CharacterBase {
     });
   }
 
+  // 注意重载 getEx_up()
+  setExUpBuff(name: string, val: number, duration: number): void {
+    this.setBuff({
+      target: 'ex_up',
+      name,
+      val,
+      duration,
+    });
+  }
+
   setBuff(buff: Buff): void {
     this.buffs.push(buff);
   }
@@ -320,5 +330,13 @@ export class CharacterBase {
     const leftLanes = this.getLeftLanes(numLeft);
     const rightLanes = this.getRightLanes(numRight);
     return [...leftLanes, ...rightLanes];
+  }
+
+  setATKBuff(_name: string, _val: number, _duration: number): void {
+    // todo
+  }
+
+  setCriticalBuff(_name: string, _val: number, _duration: number): void {
+    // todo
   }
 }
