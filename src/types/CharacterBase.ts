@@ -271,6 +271,15 @@ export class CharacterBase {
     return this.battleSystem.team[index + 1];
   }
 
+  setStealth(name: string, duration: number): void {
+    this.setBuff({
+      target: 'ステルス',
+      name,
+      val: 1,
+      duration,
+    });
+  }
+
   isStealth(): boolean {
     return this.buffs.some(buff => buff.target === 'ステルス');
   }
