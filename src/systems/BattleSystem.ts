@@ -398,4 +398,11 @@ export class BattleSystem {
   setRecoverHPEveryCT(_val: number, _duration: number): void {
     // todo: 感觉除非极限情况不然没必要算了
   }
+
+  getCharacterByIndex(index: number): CharacterBase | null {
+    if (index < 0 || index >= this.battleSystem.team.length) {
+      return null; // 如果索引越界，返回 null
+    }
+    return this.battleSystem.team[index];
+  }
 }

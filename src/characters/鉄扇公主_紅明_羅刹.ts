@@ -34,10 +34,7 @@ export class 鉄扇公主_紅明_羅刹 extends CharacterBase {
       }
     }
     if (this.battleSystem.getFactionCount('魔族') >= 5) {
-      this.exBuff = {
-        costReduction: 40,
-        remainingUses: 1,
-      };
+      this.setExBuff(40, 1);
     }
   }
 }

@@ -183,6 +183,9 @@ export class CharacterBase {
 
   getActualExCost(baseCost: number): number {
     if (this.exBuff) {
+      if (this.exBuff.costReduction <= 1) {
+        return Math.max(0, baseCost - baseCost * this.exBuff.costReduction);
+      }
       return Math.max(0, baseCost - this.exBuff.costReduction);
     }
     return baseCost;
