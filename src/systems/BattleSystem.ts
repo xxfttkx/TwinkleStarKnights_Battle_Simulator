@@ -388,4 +388,8 @@ export class BattleSystem {
   getRush(): number {
     return this.rush;
   }
+
+  getUnisonCount(): number {
+    return this.canAction.length;
+  }
 }
