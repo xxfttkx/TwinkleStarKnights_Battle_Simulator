@@ -24,7 +24,7 @@ export class 智謀の黒き微笑み_ジュリエッテ extends CharacterBase {
         c.notesForward(7);
       }
     }
-    if (this.battleSystem.isOverHeal()) {
+    if (this.battleSystem.isOverheal()) {
       // todo: atk
     }
     if (this.battleSystem.isFullOverheal()) {

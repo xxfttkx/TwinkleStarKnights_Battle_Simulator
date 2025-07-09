@@ -31,7 +31,7 @@ export class 悪姫兎視たんたん_セナリィ extends CharacterBase {
       c => c.isElement('炎') || c.isElement('水')
     ).length;
     this.battleSystem.addHP(0.45 + num * 0.09);
-    if (this.battleSystem.isOverHeal()) {
+    if (this.battleSystem.isOverheal()) {
       for (const c of this.battleSystem.team) {
         if (c.isElement('炎') || c.isElement('水')) {
           c.notesForward(5);

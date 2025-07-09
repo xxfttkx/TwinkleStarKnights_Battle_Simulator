@@ -22,7 +22,7 @@ export class 碧水のミューズ_ロロット extends CharacterBase {
     this.battleSystem.addHP(
       0.5 + 0.1 * this.battleSystem.getFactionOrElementCount('神族', '水')
     );
-    if (this.battleSystem.isOverHeal()) {
+    if (this.battleSystem.isOverheal()) {
       for (const c of team) {
         c.setBuff({
           target: 'ct',

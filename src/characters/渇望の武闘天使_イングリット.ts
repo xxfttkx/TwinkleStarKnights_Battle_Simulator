@@ -2,7 +2,7 @@ import { CharacterBase, type Buff } from '../types/CharacterBase';
 
 export class 渇望の武闘天使_イングリット extends CharacterBase {
   useSkill1(team: CharacterBase[]): void {
-    if (this.battleSystem.isOverHeal()) {
+    if (this.battleSystem.isOverheal()) {
       for (const c of team) {
         const buff: Buff = {
           target: 'ct',
@@ -18,7 +18,7 @@ export class 渇望の武闘天使_イングリット extends CharacterBase {
   useSkill2(_team: CharacterBase[]): void {
     if (this.battleSystem.isFullOverheal()) {
       this.battleSystem.addHP(1.0 - this.battleSystem.hp);
-    } else if (this.battleSystem.isOverHeal()) {
+    } else if (this.battleSystem.isOverheal()) {
       this.battleSystem.addHP(1.0 - this.battleSystem.hp);
     }
   }

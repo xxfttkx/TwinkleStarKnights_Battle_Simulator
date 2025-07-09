@@ -8,7 +8,7 @@ export class 美の冒涜者_ヴァレリー extends CharacterBase {
     for (const c of team) {
       c.notesForward(4);
     }
-    if (this.battleSystem.isOverHeal()) {
+    if (this.battleSystem.isOverheal()) {
       this.setBuff({
         target: 'ct',
         name: '美の冒涜者_ヴァレリー',
@@ -22,7 +22,7 @@ export class 美の冒涜者_ヴァレリー extends CharacterBase {
     this.battleSystem.addHP(
       0.5 + 0.1 * this.battleSystem.getFactionCount('人間')
     );
-    if (this.battleSystem.isOverHeal()) {
+    if (this.battleSystem.isOverheal()) {
       for (const c of team) {
         c.setBuff({
           target: 'ct',

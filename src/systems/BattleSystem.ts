@@ -279,7 +279,7 @@ export class BattleSystem {
     this.hp = Math.min(this.hp + amount, 3.0); // 确保 HP 不超过 3.0
   }
 
-  isOverHeal(): boolean {
+  isOverheal(): boolean {
     return this.hp > 1.0;
   }
 

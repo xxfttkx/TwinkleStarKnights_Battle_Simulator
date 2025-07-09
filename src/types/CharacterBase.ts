@@ -256,6 +256,8 @@ export class CharacterBase {
           this.data.affiliation === affiliation ||
           this.data.affiliation === 'コラプサ'
         );
+      case '流星学園附属':
+        return this.data.affiliation.includes('流星附属');
       default:
         return this.data.affiliation === affiliation;
     }

@@ -11,7 +11,7 @@ export class キュートスタイル_レミカ extends CharacterBase {
       val: 0.5,
       duration: 1,
     });
-    if (this.battleSystem.isOverHeal()) {
+    if (this.battleSystem.isOverheal()) {
       this.getLeftCharacter()?.notesForward(7);
     }
   }
@@ -20,7 +20,7 @@ export class キュートスタイル_レミカ extends CharacterBase {
     this.battleSystem.addHP(
       0.5 + 0.1 * this.battleSystem.getElementCount('炎')
     );
-    if (this.battleSystem.isOverHeal()) {
+    if (this.battleSystem.isOverheal()) {
       for (const c of team) {
         c.setBuff({
           target: 'ct',
