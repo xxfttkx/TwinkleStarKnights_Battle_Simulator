@@ -46,6 +46,7 @@ export class CharacterBase {
     subElement: string; // サブ属性名
     duration: number; // 持続時間
   };
+  returnNotes: number = -1;
   useSecondFrontAllyNoteReturn = false;
   secondFaction: string = ''; // セカンド種族
 
@@ -99,12 +100,18 @@ export class CharacterBase {
 
   // 行動終了後のノーツ戻り位置を前から2番目の味方と同じ位置にする（対象がいない場合、行動CT値を参照した位置に戻る）
   applyNotesOverride(): void {
+    if (this.returnNotes != -1) {
+      this.notesChange(this.returnNotes);
+      this.returnNotes = -1; // 重置返回位置
+      return;
+    }
     if (this.useSecondFrontAllyNoteReturn) {
       this.useSecondFrontAllyNoteReturn = false;
       const secPos = this.battleSystem.getSecondPos();
       if (secPos !== 999) {
         this.notesChange(secPos);
       }
+      return;
     }
   }
 
