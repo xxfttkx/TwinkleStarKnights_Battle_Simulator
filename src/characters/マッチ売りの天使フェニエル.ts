@@ -7,13 +7,9 @@ export class マッチ売りの天使フェニエル extends CharacterBase {
     // 前から2番目にいる味方のEX消費量を神族の味方の数×10％減少(次ターン以降EXスキル1回発動まで) /
     // ATKを100％アップ（40CT）/
     // ノーツを6前方に移動
-    const secondFrontAlly = this.battleSystem.getCharacterByIndex(2 - 1);
-    if (secondFrontAlly) {
-      secondFrontAlly.setExBuff(
-        this.battleSystem.getFactionCount('神族') * 0.1,
-        1
-      );
-      secondFrontAlly.notesForward(6);
+    for (const c of this.battleSystem.getSecondCharacters()) {
+      c.setExBuff(this.battleSystem.getFactionCount('神族') * 0.1, 1);
+      c.notesForward(6);
     }
   }
 
