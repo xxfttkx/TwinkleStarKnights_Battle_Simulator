@@ -154,7 +154,7 @@ export class CharacterBase {
   }
 
   getCT(): number {
-    return Math.max(1, Math.ceil(this.data.ct * (1 - this.getCTBonus())));
+    return Math.max(5, Math.ceil(this.data.ct * (1 - this.getCTBonus())));
   }
 
   notesForward(num: number): void {

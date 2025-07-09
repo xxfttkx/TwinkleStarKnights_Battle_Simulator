@@ -9,3 +9,5 @@
 - [FGO Teamup](https://lsq5i5j.github.io/fgo-teamup/#/)
 
 - [戦闘の手引き](https://twinklestarknights.wikiru.jp/?SandBox/%E6%88%A6%E9%97%98%E3%81%AE%E6%89%8B%E5%BC%95%E3%81%8D)
+
+- [CT・重さ・ノックバック](https://twinklestarknights.wikiru.jp/?SandBox/CT%E3%83%BB%E9%87%8D%E3%81%95%E3%83%BB%E3%83%8E%E3%83%83%E3%82%AF%E3%83%90%E3%83%83%E3%82%AF)

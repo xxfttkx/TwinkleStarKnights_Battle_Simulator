@@ -21,7 +21,7 @@ export class 流星ライダーアポロ extends CharacterBase {
     // ウイングフォームの行動CT-5
     return this.status === 'ソードフォーム'
       ? super.getCT()
-      : Math.max(1, Math.ceil((this.data.ct - 5) * (1 - this.getCTBonus())));
+      : Math.max(5, Math.ceil((this.data.ct - 5) * (1 - this.getCTBonus())));
   }
 
   getEx_up(): number {
