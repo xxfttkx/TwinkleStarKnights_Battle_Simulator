@@ -84,7 +84,7 @@ export class BattleSystem {
       return;
     }
     for (const c of this.team) {
-      emitter.emit('ex-edit', [c.data.name, 400]);
+      emitter.emit('ex-edit', [c.data.name, 80]);
       emitter.emit('ex-up-edit', [c.data.name, 150]); // 通知 EX_UP 变化
     }
   }
