@@ -14,7 +14,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          persist-credentials: true  # 保留token以便后续push
+          persist-credentials: false  # 关闭默认的 GITHUB_TOKEN 认证
+          token: ${{ secrets.PAT_TOKEN }}  # 使用 PAT 认证
 
       - name: Set up Python
         uses: actions/setup-python@v4
